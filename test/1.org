@@ -1,0 +1,55 @@
+@CAPTION AAA
+
+@PROPS CAPTION="AAA" 	AUTHOR="CCC"   DATE="##lua:os.date()##"
+
+* adsafasdfasf af asf 
+
+asfasdf asdf af 
+
+** asdasdfasdf
+
+adfa a 
+
+* asfasfasf af asf asf  ##lua:os.date()##
+afafdaf
+adfafdasf
+
+** asdfasfaf
+
+afadfasdfaf
+
+*** asfdadfasdf
+
+
+afdfasfasdfasd
+	- asdfasfd
+	- asdfasdf
+		1. asdfasfad
+		- asdfasfasf
+	- afafd
+		- asdfasfasfd
+		
+	##ref:asfdadfasdf##
+
+##lua:DOC.CAPTION##
+
+	$$a+b=c$$   ** asdfasdfasdf** ``asdfasdfa``
+	
+*** a1
+@TYPE EQ
+a+b=c
+***
+
+*** a2
+@TYPE EQ
+a+b=c
+***
+
+##ref:a1##
+##ref:a2##
+
+the file is
+
+*** file
+@TYPE CODE
+##file:1.org##

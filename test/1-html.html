@@ -1,0 +1,199 @@
+	<html>
+	<head>
+	<title>AAA</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css">
+	
+	body{
+	background: #e7e7e7;
+	}
+	
+	ol,ul{
+	}
+	
+	div#toc {
+				border: black 3px solid;
+				width: 100%;
+				white-space: pre-wrap;
+	}
+	
+	.eq {
+		border: black 1px solid;'
+	}
+	
+	.eq_label{
+		float: right;
+	}
+	
+	.eq_body{
+		float: left;
+	}
+	
+		#title {
+				font-size: 180%;
+	}
+	
+h1
+{
+    font-size: 150%; 
+/*     border-bottom: #000 1px solid;  */
+	border-left: red 12px solid;
+}
+
+h2 
+{
+    font-size: 130%;
+/*     border-bottom: #000 1px solid;  */
+	border-left: blue 24px solid;
+}	
+h3
+{
+    font-size: 110%;
+/* 	border-bottom: 1px solid #000000;  */
+	border-left: orange 36px solid;
+}
+
+h4
+{
+font-size: 100%;
+/* 	border-bottom: 1px solid #000000;  */
+	border-left: black 48px solid;
+	padding-left: 10px;
+}
+
+h5
+{
+	border-left: black 60px solid;
+}
+
+table
+{
+	bodrder-color:#000;
+ border-collapse: collapse;
+	border-bottom: 2px solid; 
+	border-top: 2px solid; 
+ 	width: 60%;
+		text-align: center;
+}
+
+th
+{
+	border-bottom: 2px solid; 
+}
+
+
+
+	</style>
+
+
+
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+	</head>
+	<body>
+	<center id='title'><bold>AAA</bold></center>
+	<center>CCC</center>
+	<center>Wed Jan 13 09:42:24 2016</center>
+	<p></p>
+<p></p>
+
+<h1 id='SEC:一'>一 adsafasdfasf af asf</h1><p></p>
+<p>asfasdf asdf af </p>
+<p></p>
+
+<h2 id='SEC:一 . 一'>一 . 一 asdasdfasdf</h2><p></p>
+<p>adfa a </p>
+<p></p>
+
+<h1 id='SEC:二'>二 asfasfasf af asf asf  Wed Jan 13 09:42:24 2016</h1><p>afafdaf</p>
+<p>adfafdasf</p>
+<p></p>
+
+<h2 id='SEC:二 . 一'>二 . 一 asdfasfaf</h2><p></p>
+<p>afadfasdfaf</p>
+<p></p>
+
+<h3 id='SEC:二 . 一 . 一'>二 . 一 . 一 asfdadfasdf</h3><p></p>
+<p></p>
+<p>afdfasfasdfasd</p>
+<ul><li>asdfasfd</li>
+<li>asdfasdf</li>
+<ol><li>asdfasfad</li>
+<li>asdfasfasf</li></ol>
+<li>afafd</li>
+<ul><li>asdfasfasfd</li></ul></ul>
+<p>		</p>
+<p>	<a href='#SEC:二 . 一 . 一'>SEC.二 . 一 . 一</a></p>
+<p></p>
+<p>AAA</p>
+<p></p>
+<p>	\(a+b=c\)   <strong><em>asdfasdfasdf</em></strong> "asdfasdfa"</p>
+<p>	</p>
+<p id='EQ:1' class='eq'><span class='eq_label'>(1)</span> \[a+b=c\]  </p>
+<p></p>
+<p id='EQ:2' class='eq'><span class='eq_label'>(2)</span> \[a+b=c\]  </p>
+<p></p>
+<p><a href='#EQ:1'>EQ.1</a></p>
+<p><a href='#EQ:2'>EQ.2</a></p>
+<p></p>
+<p>the file is</p>
+<p></p>
+<div id='CODE:1'><p>CODE.1 file</p>
+<textarea rows=10 cols=100>@CAPTION AAA
+
+@PROPS CAPTION="AAA" 	AUTHOR="CCC"   DATE="##lua:os.date()##"
+
+* adsafasdfasf af asf 
+
+asfasdf asdf af 
+
+** asdasdfasdf
+
+adfa a 
+
+* asfasfasf af asf asf  ##lua:os.date()##
+afafdaf
+adfafdasf
+
+** asdfasfaf
+
+afadfasdfaf
+
+*** asfdadfasdf
+
+
+afdfasfasdfasd
+	- asdfasfd
+	- asdfasdf
+		1. asdfasfad
+		- asdfasfasf
+	- afafd
+		- asdfasfasfd
+		
+	##ref:asfdadfasdf##
+
+##lua:DOC.CAPTION##
+
+	$$a+b=c$$   ** asdfasdfasdf** ``asdfasdfa``
+	
+*** a1
+@TYPE EQ
+a+b=c
+***
+
+*** a2
+@TYPE EQ
+a+b=c
+***
+
+##ref:a1##
+##ref:a2##
+
+the file is
+
+*** file
+@TYPE CODE
+##file:1.org##</textarea>
+</div>
+	</body>
+	</html>
