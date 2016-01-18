@@ -34,7 +34,6 @@ offset2xy=function(str,x,y)
 	d=match(str,"D(%d*)");  if d then d=tonumber(d) or 0; y=y+d end
 	d=match(str,"L(%d*)");	if d then d=tonumber(d) or 0; x=x-d end
 	d=match(str,"R(%d*)");	if d then d=tonumber(d) or 0; x=x+d end
-	print(str,x,y)
 	return x,y
 end
 
@@ -138,6 +137,30 @@ curve2str=function(curve,smooth,closed)
 			push(t,"L")	p=curve[i]; 	push(t,p[1]);	push(t,p[2])
 		end
 	end
-	print("t",unpack(t))
 	return table.concat(t," ")..(closed and " Z" or "") 
 end
+
+tag_elements=function(arr,filter,obj,key,value)
+	for i,v in ipairs(arr) do
+		if filter(v,obj) then v[key]=value end
+	end
+end
+
+remove_elements=function(arr,key,value)
+	local insert,remove=table.insert,table.remove
+	local ids={}
+	for i,v in ipairs(v) do		
+		if v[key]==value then insert(ids,i) end
+	end
+	for i,v in ipairs(ids) do remove(arr,v-i+1) end
+	return arr
+end
+
+make_set_func=function(dst)
+	return function(props)
+		for k,v in pairs(props) do
+			dst[k]=v
+		end
+	end
+end
+

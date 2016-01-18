@@ -1,19 +1,86 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
 "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="800" height="600" font-size="20px" version="1.1" xmlns="http://www.w3.org/2000/svg" style="stroke: black; stroke-width: 3px; fill: none" >
+<svg width="800" height="600" font-size="20px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="stroke: black; stroke-width: 2px; fill: none" >
 <style> text{stroke: black; stroke-width: 1px; fill: black;} </style>
+ <defs>
+		<marker id="arrow" viewBox="0 0 20 20" refX="20" refY="10" markerUnits="strokeWidth" fill="black" markerWidth="8" markerHeight="6" orient="auto">
+			<path d="M 0 0 L 20 10 L 0 20 L 10 10 z"/>
+		</marker>
+		<marker id="reverse-arrow" viewBox="0 0 20 20" refX="0" refY="10" markerUnits="strokeWidth" fill="black" markerWidth="8" markerHeight="6" orient="auto">
+			<path d="M 20 0 L 0 10 L 20 20 L 10 10 z"/>
+		</marker>
+		<marker id="point2d" viewBox="0 0 20 20" refX="10" refY="10" markerUnits="strokeWidth" fill="orange" markerWidth="6" markerHeight="6" orient="auto">
+			<circle cx="10" cy="10" r="9" />
+		</marker>
+				<marker id="point2d-black" viewBox="0 0 20 20" refX="10" refY="10" markerUnits="strokeWidth" fill="black" markerWidth="6" markerHeight="6" orient="auto">
+			<circle cx="10" cy="10" r="9" />
+		</marker>
+		<marker id="point2d-white" viewBox="0 0 20 20" refX="10" refY="10" markerUnits="strokeWidth" fill="white" markerWidth="6" markerHeight="6" orient="auto">
+			<circle cx="10" cy="10" r="9" />
+		</marker>
+		<marker id="point2d-gray" viewBox="0 0 20 20" refX="10" refY="10" markerUnits="strokeWidth" fill="#888888" markerWidth="6" markerHeight="6" orient="auto">
+			<circle cx="10" cy="10" r="9" />
+		</marker>
+		 <filter id='shadow' filterRes='50' x='0' y='0'>
+			<feGaussianBlur stdDeviation='2 2'/>
+			<feOffset dx='2' dy='2'/>
+		</filter>
+		<linearGradient x1='0%' x2='100%' id='linear0' y1='0%' y2='100%'>
+			<stop offset='0%' style='stop-color:rgb(255,255,255);stop-opacity:1'/>
+			<stop offset='100%' style='stop-color:rgb(220,220,220);stop-opacity:1'/>
+		</linearGradient>
+		<linearGradient x1='0%' x2='100%' id='multi0' y1='100%' y2='100%'>
+			<stop offset='0%' style='stop-color:rgb(255,255,255);stop-opacity:1'/>
+			<stop offset='45%' style='stop-color:rgb(255,255,255);stop-opacity:1'/>
+			<stop offset='46%' style='stop-color:rgb(0,0,0);stop-opacity:1'/>
+			<stop offset='50%' style='stop-color:rgb(0,0,0);stop-opacity:1'/>
+			<stop offset='54%' style='stop-color:rgb(0,0,0);stop-opacity:1'/>
+			<stop offset='55%' style='stop-color:rgb(220,220,220);stop-opacity:1'/>
+			<stop offset='100%' style='stop-color:rgb(220,220,220);stop-opacity:1'/>
+		</linearGradient>
+		<linearGradient x1='100%' x2='0%' id='multi1' y1='100%' y2='100%'>
+			<stop offset='0%' style='stop-color:rgb(255,255,255);stop-opacity:1'/>
+			<stop offset='45%' style='stop-color:rgb(255,255,255);stop-opacity:1'/>
+			<stop offset='46%' style='stop-color:rgb(0,0,0);stop-opacity:1'/>
+			<stop offset='50%' style='stop-color:rgb(0,0,0);stop-opacity:1'/>
+			<stop offset='54%' style='stop-color:rgb(0,0,0);stop-opacity:1'/>
+			<stop offset='55%' style='stop-color:rgb(220,220,220);stop-opacity:1'/>
+			<stop offset='100%' style='stop-color:rgb(220,220,220);stop-opacity:1'/>
+		</linearGradient>
+		<linearGradient x1='100%' x2='0%' id='multi2' y1='100%' y2='100%'>
+			<stop offset='0%' style='stop-color:rgb(255,255,255);stop-opacity:1'/>
+			<stop offset='45%' style='stop-color:rgb(255,255,255);stop-opacity:1'/>
+			<stop offset='46%' style='stop-color:rgb(0,0,0);stop-opacity:1'/>
+			<stop offset='50%' style='stop-color:rgb(0,0,0);stop-opacity:1'/>
+			<stop offset='54%' style='stop-color:rgb(0,0,0);stop-opacity:1'/>
+			<stop offset='55%' style='stop-color:rgb(255,255,255);stop-opacity:1'/>
+			<stop offset='100%' style='stop-color:rgb(255,255,255);stop-opacity:1'/>
+		</linearGradient>
+		<radialGradient id="radial0" cx="30%" cy="30%" r="50%">
+			<stop offset="0%" style="stop-color:rgb(255,255,255); stop-opacity:0" />
+			<stop offset="100%" style="stop-color:rgb(0,0,255);stop-opacity:1" />
+     </radialGradient>
+	 
+     </defs>
 <rect x="50" y="50" width="100" height="100" style="" />
-<ellipse cx="120" cy="250" rx="50" ry="50" style="" />
-<rect x="350" y="350" width="100" height="100" style="" />
-<path d="M 164.07399850144 273.61107062577 L 350 373.21428571429" style="@STYLE@" />
-<path d="M 170 250 L 400 250 L 400 350" style="@STYLE@" />
-<path d="M 120 300 L 120 400 L 350 400" style="@STYLE@" />
-<path d="M 170 250 L 260 250 L 260 400 L 350 400" style="@STYLE@" />
-<path d="M 170 250 C 260 250 260 400 350 400" style="@STYLE@" />
-<path d="M 100 150 L 100 175 L 120 175 L 120 200" style="@STYLE@" />
-<path d="M 150 100 L 220 100 L 220 250 L 170 250" style="@STYLE@" />
-<path d="M 106.66666666667 150 L 113.39181399545 200.43860496587" style="@STYLE@" />
-<text x="100" y="110" style="stroke-width:1px;fill:black;text-anchor:middle;">HAHA</text>
-<text x="260" y="335" style="text-anchor:start">hahah</text>
+<text x="100" y="100" dx="@dx@" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">HAHA</text>
+	 <g style=";fill:white;">
+	 <ellipse cx="120" cy="275" rx="50" ry="25"  />
+	 <rect x="70" y="200" width="100" height="75" style="stroke:none;" />
+	 <ellipse cx="120" cy="200" rx="50" ry="25"   />
+	 <path d="M 70 200 L 70 275 M 170 200 L 170 275" />
+	 </g>
+	
+<text x="120" y="250" dx="@dx@" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">aaa</text>
+<image x="350" y="350" width="100" height="100" xlink:href="http://avatar.csdn.net/D/F/0/1_ykjxl.jpg" filter="@filter@"  style=""/>
+<path d="M 170 276.78571428571 L 350 373.21428571429" style="marker-end:url(#arrow);marker-start:url(#reverse-arrow);;stroke-dasharray:10,3" marker-end=""  />
+<path d="M 170 250 L 400 250 L 400 350" style="marker-end:url(#arrow);marker-start:url(#reverse-arrow);;stroke-dasharray:3,3" marker-end=""  />
+<path d="M 120 300 L 120 400 L 350 400" style="marker-end:url(#arrow);" marker-end=""  />
+<path d="M 170 250 L 260 250 L 260 400 L 350 400" style="marker-end:url(#arrow);" marker-end=""  />
+<path d="M 170 250 C 260 250 260 400 350 400" style="marker-end:url(#arrow);" marker-end=""  />
+<text x="260" y="325" dx="@dx@" dy="10" style="text-anchor:start">hahah</text>
+<path d="M 100 150 L 100 175 L 120 175 L 120 200" style="marker-end:url(#arrow);" marker-end=""  />
+<path d="M 150 100 L 220 100 L 220 250 L 170 250" style="marker-end:url(#arrow);" marker-end=""  />
+<path d="M 106.66666666667 150 L 113.33333333333 200" style="marker-end:url(#arrow);" marker-end=""  />
 </svg>

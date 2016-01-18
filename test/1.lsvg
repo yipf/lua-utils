@@ -1,19 +1,17 @@
-dofile "../svg/main.lua"
 
-local node,edge,export=make_canvas()
+local n1=Node{100,100,rx=50,ry=50,SHAPE="rect",LABEL="HAHA",LOFFSET="U70"}
+local n2=Node{120,250,rx=50,ry=50,SHAPE="database",LABEL="aaa"}
+local n3=Node{400,400,rx=50,ry=50,SHAPE="img",SRC="http://avatar.csdn.net/D/F/0/1_ykjxl.jpg"}
 
-local n1=node{100,100,rx=50,ry=50,SHAPE="rect",LABEL="HAHA",LOFFSET="U70"}
-local n2=node{120,250,rx=50,ry=50,SHAPE="ellipse"}
-local n3=node{400,400,rx=50,ry=50,SHAPE="rect"}
+Edge{n2,n3,SHAPE="-",STYLE={["<->"]=true,["---"]=true}}
+Edge{n2,n3,SHAPE="7",STYLE={["<->"]=true,["..."]=true}}
+Edge{n2,n3,SHAPE="L"}
+Edge{n2,n3,SHAPE="Z"}
+Edge{n2,n3,SHAPE="Z",SMOOTH=true,LABEL="hahah",LSTYLE={align="start"}}
 
-edge{n2,n3,SHAPE="-"}
-edge{n2,n3,SHAPE="7"}
-edge{n2,n3,SHAPE="L"}
-edge{n2,n3,SHAPE="Z"}
-edge{n2,n3,SHAPE="Z",SMOOTH=true,LABEL="hahah",LSTYLE={align="start"}}
+Edge{n1,n2,SHAPE="N"}
+Edge{n1,n2,SHAPE="Z"}
+Edge{n1,n2,SHAPE="|"}
 
-edge{n1,n2,SHAPE="N"}
-edge{n1,n2,SHAPE="Z"}
-edge{n1,n2,SHAPE="|"}
-
-export("1")
+--~ Export()
+Export("1.png")
