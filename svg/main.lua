@@ -5,27 +5,36 @@ require "svg-utils"
 local type=type
 local push=table.insert 
 
+local char2obj={["<"]="reverse-arrow",["o"]="point2d",[">"]="arrow"}
+
 local styles={
 	dashed="stroke-dasharray:10,3",	
 	dotted="stroke-dasharray:3,3",
-	align="text-anchor:%s",
+	align="text-anchor:@position@",
 	noborder="stroke-width:0",
 	nofill="fill:none",
 	
-	["<->"]="marker-end:url(#arrow);marker-start:url(#reverse-arrow);",
-	["-->"]="marker-end:url(#arrow)",
-	["<--"]="marker-start:url(#reverse-arrow)",
-	["---"]="stroke-dasharray:10,3",	
-	["..."]="stroke-dasharray:3,3",
-	["|--"]="text-anchor:start",
-	["-|-"]="text-anchor:middle",
-	["--|"]="text-anchor:end",
+	connection=function(str)
+		local s,m,e=string.match(str,"^([o%<%>]*)(.-)([o%<%>]*)$")
+		local ss=""
+		if string.len(s)>0 then ss=ss..string.format("marker-start:url(#%s);",char2obj[string.sub(s,1,1)])		end
+		if string.len(e)>0 then ss=ss..string.format("marker-end:url(#%s);",char2obj[string.sub(e,1,1)])		end
+		if string.match(m,"o") then ss=ss.."marker-mid:url(#point2d);"  end
+		if string.match(m,"%-%-") then ss=ss.."stroke-dasharray:10,3;"
+		elseif  string.match(m,"%.%.") then ss=ss.."stroke-dasharray:3,3;"  end
+		return ss
+	end,
+	
+	align_style=function(str)
+		local s=string.match(str,"^%-*|()%-*$")
+		return s==1 and "text-anchor:start" or s==string.len(str) and "text-anchor:end" or "text-anchor:middle"
+	end,
 	
 	border_width="stroke-width:%s",
 	border="stroke:%s",
 	
-	fill="fill:%s",
-	opacity="opacity:%s",
+	fill="fill:@color@",
+	opacity="opacity:@opacity@",
 
 }
 
@@ -34,7 +43,7 @@ local canvas={w=800,h=600,font_size=20}
 local objects={}
 
 Node=function(node)
-	node[1]=node[1] or 1; 	node[2]=node[2] or node[1]
+	node.cx=node.cx or node[1] or 1; 	node.cy=node.cy or node[2] or node.cx
 	node.rx= node.rx or 0; 	node.ry=node.ry or node.rx
 	node.SHAPE=node.SHAPE or "rect"
 	push(objects,node)
@@ -47,6 +56,12 @@ Edge=function(edge)
 	return edge
 end
 
+Group=function(group)
+	group.GROUP=true
+	push(objects,group)
+	return group
+end
+
 local is_edge=function(obj) return obj.EDGE end
 
 local gen_label=function(label,contents)
@@ -56,16 +71,17 @@ local gen_label=function(label,contents)
 	local lines={}
 	for line in string.gmatch(label.LABEL,"(%C+)") do push(lines,line) end
 	local mid=#lines/2
+	label.dx=dx
 	for i,line in ipairs(lines) do
-		label.dy=(i-mid)*(canvas.font_size)
+		label.dy=(i-mid)*(canvas.font_size)+dy
 		label.TEXT=line
 		push(contents,eval(ENV["label"],label))
 	end
+	label.dy=dy
 	return label
 end
 
 local gen_node=function(node,contents)
-	node.cx,node.cy=node[1],node[2]
 	node.STYLE=style2str(node.STYLE or "",styles)
 	push(contents,eval(ENV[node.SHAPE],node))
 	if node.LABEL then 
@@ -76,12 +92,17 @@ end
 
 local gen_edge=function(edge,contents)
 	edge.STYLE=style2str(edge.STYLE or [[marker-end:url(#arrow);]],styles)
-	local curve=edge
-	if edge.SHAPE then
-		curve,edge.lx,edge.ly=pair2curve(edge[1],edge[2],edge.SHAPE)
+	local shape,n,curve=edge.SHAPE,#edge
+	if shape and n>1 then -- if it is a edge form point-to-point
+		for i=1,n-1 do
+			curve,edge.lx,edge.ly=pair2curve(edge[i],edge[i+1],edge.SHAPE)
+			edge.PATH=curve2str(curve,edge.SMOOTH,edge.CLOSED)
+			push(contents,eval(ENV["curve"],edge))
+		end
+	else	
+		edge.PATH=curve2str(edge,edge.SMOOTH,edge.CLOSED)
+		push(contents,eval(ENV["curve"],edge))
 	end
-	edge.PATH=curve2str(curve,edge.SMOOTH,edge.CLOSED)
-	push(contents,eval(ENV["curve"],edge))
 	if edge.LABEL then 
 		edge.lx,edge.ly=edge.lx or edge[1].cx,edge.ly or edge[1].cy
 		gen_label(edge,contents)
@@ -91,7 +112,17 @@ end
 Export=function(filepath)
 	local contents={}
 	for i,obj in ipairs(objects) do
-		(is_edge(obj) and gen_edge or gen_node)(obj,contents)
+		if obj.EDGE then
+			gen_edge(obj,contents)
+		else
+			if obj.GROUP then 
+				local xmin,xmax,ymin,ymax=compute_border(obj)
+				obj.cx,obj.cy=(xmin+xmax)/2,(ymin+ymax)/2
+				obj.rx,obj.ry=(xmax-xmin)/2+(obj.xoffset or 0),(ymax-ymin)/2+(obj.yoffset or 0)
+				obj.SHAPE=obj.SHAPE or "rect"
+			end
+			gen_node(obj,contents)
+		end
 	end
 	canvas.BODY=table.concat(contents,"\n")
 	-- export
@@ -126,6 +157,7 @@ local include=function(edge,node)
 end
 
 Remove=function(obj)
+	if not obj then objects={} return end -- if obj is not given, remove all objects
 	tag_elements(objects,eq,obj,"__REMOVED",true)
 	if not is_edge(obj) then
 		tag_elements(objects,include,obj,"__REMOVED",true)
@@ -135,12 +167,13 @@ end
 
 ENV={
 	-- basic shapes
-	["curve"]=[[<path d="@PATH@" style="@STYLE or ''@" marker-end="@HEAD or ''@"  />]],
+	["curve"]=[[<path d="@PATH@" style="@STYLE or ''@"  />]],
 	["rect"]=[[<rect x="@cx-rx@" y="@cy-ry@" width="@rx+rx@" height="@ry+ry@" style="@STYLE or ''@" />]],
 	["ellipse"]=[[<ellipse cx="@cx@" cy="@cy@" rx="@rx@" ry="@ry@" style="@STYLE or ''@" />]],
 	["img"]=[[<image x="@cx-rx@" y="@cy-ry@" width="@rx+rx@" height="@ry+ry@" xlink:href="@SRC@" filter="@filter@"  style="@STYLE or ''@"/>]],
 	mulbox=[[<ellipse cx="@cx@" cy="@cy@" rx="@rx@" ry="@ry@"  STYLE="@STYLE or ''@"  /><path d="M @cx-0.707*rx@ @cy-0.707*ry@ L @cx+0.707*rx@ @cy+0.707*ry@ M @cx-0.707*rx@ @cy+0.707*ry@ L @cx+0.707*rx@ @cy-0.707*ry@" />]],
 	addbox=[[<ellipse cx="@cx@" cy="@cy@" rx="@rx@" ry="@ry@"  STYLE="@STYLE or ''@" /><path d="M @cx-rx@ @cy@ L @cx+rx@ @cy@ M @cx@ @cy-ry@ L @cx@ @cy+ry@" />]],
+	diamond=[[<path d="M @cx-rx@ @cy@ L @cx@ @cy-ry@ L @cx+rx@ @cy@ L @cx@ @cy+ry@ z"   style="@STYLE or ''@" />]],
 	database=[[
 	 <g style="@STYLE or ''@;fill:white;">
 	 <ellipse cx="@cx@" cy="@cy+ry/2@" rx="@rx@" ry="@ry/2@"  />
@@ -158,7 +191,7 @@ ENV.canvas=[[
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
 "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="@w@" height="@h@" font-size="@font_size@px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="stroke: black; stroke-width: 2px; fill: none" >
-<style> text{stroke: black; stroke-width: 1px; fill: black;} </style>
+<style> text{stroke:none; stroke-width:0px; fill:black;} </style>
  <defs>
 		<marker id="arrow" viewBox="0 0 20 20" refX="20" refY="10" markerUnits="strokeWidth" fill="black" markerWidth="8" markerHeight="6" orient="auto">
 			<path d="M 0 0 L 20 10 L 0 20 L 10 10 z"/>

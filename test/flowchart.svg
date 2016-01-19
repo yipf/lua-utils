@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
 "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="1000" height="1000" font-size="20px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="stroke: black; stroke-width: 2px; fill: none" >
-<style> text{stroke: black; stroke-width: 1px; fill: black;} </style>
+<style> text{stroke:none; stroke-width:0px; fill:black;} </style>
  <defs>
 		<marker id="arrow" viewBox="0 0 20 20" refX="20" refY="10" markerUnits="strokeWidth" fill="black" markerWidth="8" markerHeight="6" orient="auto">
 			<path d="M 0 0 L 20 10 L 0 20 L 10 10 z"/>
@@ -63,33 +63,26 @@
      </radialGradient>
 	 
      </defs>
-<rect x="75" y="325" width="50" height="50" style="" />
-<text x="100" y="350" dx="@dx@" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">root</text>
-<rect x="175" y="75" width="50" height="50" style="fill:orange;" />
-<text x="200" y="100" dx="@dx@" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">left</text>
-<path d="M 125 350 L 150 350 L 150 100 L 175 100" style="fill:none;" marker-end=""  />
-<rect x="175" y="375" width="50" height="50" style="fill:red;" />
-<text x="200" y="400" dx="@dx@" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">right</text>
-<rect x="275" y="175" width="50" height="50" style="" />
-<text x="300" y="200" dx="@dx@" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">r1</text>
-<path d="M 225 400 L 250 400 L 250 200 L 275 200" style="fill:none;" marker-end=""  />
-<rect x="275" y="275" width="50" height="50" style="" />
-<text x="300" y="300" dx="@dx@" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">r2</text>
-<path d="M 225 400 L 250 400 L 250 300 L 275 300" style="fill:none;" marker-end=""  />
-<rect x="275" y="475" width="50" height="50" style="fill:grey;" />
-<text x="300" y="500" dx="@dx@" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">r3</text>
-<rect x="375" y="375" width="50" height="50" style="" />
-<text x="400" y="400" dx="@dx@" dy="0" style="stroke-width:1px;fill:black;text-anchor:middle;">rr1</text>
-<text x="400" y="400" dx="@dx@" dy="20" style="stroke-width:1px;fill:black;text-anchor:middle;">ddd</text>
-<path d="M 325 500 L 350 500 L 350 400 L 375 400" style="fill:none;" marker-end=""  />
-<rect x="375" y="475" width="50" height="50" style="" />
-<text x="400" y="500" dx="@dx@" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">rr2</text>
-<path d="M 325 500 L 350 500 L 350 500 L 375 500" style="fill:none;" marker-end=""  />
-<rect x="375" y="575" width="50" height="50" style="" />
-<text x="400" y="600" dx="@dx@" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">rr3</text>
-<path d="M 325 500 L 350 500 L 350 600 L 375 600" style="fill:none;" marker-end=""  />
-<path d="M 225 400 L 250 400 L 250 500 L 275 500" style="fill:none;" marker-end=""  />
-<path d="M 125 350 L 150 350 L 150 400 L 175 400" style="fill:none;" marker-end=""  />
-<path d="M 700 600 L 640.45084971875 629.38926261462 L 630.90169943749 695.10565162952 L 584.54915028125 647.55282581476 L 519.09830056251 658.77852522925 L 550 600 L 519.09830056251 541.22147477075 L 584.54915028125 552.44717418524 L 630.90169943749 504.89434837048 L 640.45084971875 570.61073738538 Z" style="fill:orange;marker-start:url(#point2d);marker-end:url(#point2d);marker-mid:url(#point2d);" marker-end=""  />
-<text x="600" y="600" dx="@dx@" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">FIVE</text>
+<ellipse cx="450" cy="100" rx="50" ry="20" style="" />
+<text x="450" y="100" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">start</text>
+<rect x="400" y="180" width="100" height="40" style="" />
+<text x="450" y="200" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">p1</text>
+<rect x="400" y="280" width="100" height="40" style="" />
+<text x="450" y="300" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">p2</text>
+<path d="M 400 400 L 450 380 L 500 400 L 450 420 z"   style="" />
+<text x="450" y="400" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">c?</text>
+<rect x="400" y="480" width="100" height="40" style="" />
+<text x="450" y="500" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">p3</text>
+<rect x="550" y="480" width="100" height="40" style="" />
+<text x="600" y="500" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">p4</text>
+<ellipse cx="450" cy="600" rx="50" ry="20" style="" />
+<text x="450" y="600" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">end</text>
+<path d="M 450 120 L 450 180" style="marker-end:url(#arrow);"  />
+<path d="M 450 220 L 450 280" style="marker-end:url(#arrow);"  />
+<path d="M 450 320 L 450 380" style="marker-end:url(#arrow);"  />
+<path d="M 450 420 L 450 480" style="marker-end:url(#arrow);"  />
+<path d="M 450 520 L 450 580" style="marker-end:url(#arrow);"  />
+<path d="M 500 400 L 600 400 L 600 480" style="marker-end:url(#arrow);"  />
+<text x="600" y="400" dx="0" dy="0" style="stroke-width:1px;fill:black;text-anchor:middle;">NO</text>
+<path d="M 550 500 L 500 500" style="marker-end:url(#arrow);"  />
 </svg>

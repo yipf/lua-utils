@@ -1,17 +1,97 @@
 
-local n1=Node{100,100,rx=50,ry=50,SHAPE="rect",LABEL="HAHA",LOFFSET="U70"}
-local n2=Node{120,250,rx=50,ry=50,SHAPE="database",LABEL="aaa"}
-local n3=Node{400,400,rx=50,ry=50,SHAPE="img",SRC="http://avatar.csdn.net/D/F/0/1_ykjxl.jpg"}
+--~ local n1=Node{100,100,rx=50,ry=50,SHAPE="rect",LABEL="HAHA",LOFFSET="U70"}
+--~ local n2=Node{120,250,rx=50,ry=50,SHAPE="database",LABEL="aaa"}
+--~ local n3=Node{400,400,rx=50,ry=50,SHAPE="img",SRC="http://avatar.csdn.net/D/F/0/1_ykjxl.jpg"}
 
-Edge{n2,n3,SHAPE="-",STYLE={["<->"]=true,["---"]=true}}
-Edge{n2,n3,SHAPE="7",STYLE={["<->"]=true,["..."]=true}}
-Edge{n2,n3,SHAPE="L"}
-Edge{n2,n3,SHAPE="Z"}
-Edge{n2,n3,SHAPE="Z",SMOOTH=true,LABEL="hahah",LSTYLE={align="start"}}
+--~ Edge{n2,n3,SHAPE="-",STYLE={ connection="<--o-->"}}
+--~ Edge{n2,n3,SHAPE="7",STYLE={connection="<..o..>"}}
+--~ Edge{n2,n3,SHAPE="L"}
+--~ Edge{n2,n3,SHAPE="Z"}
+--~ Edge{n2,n3,SHAPE="Z",SMOOTH=true,LABEL="hahah",LSTYLE={align="start"}}
 
-Edge{n1,n2,SHAPE="N"}
-Edge{n1,n2,SHAPE="Z"}
-Edge{n1,n2,SHAPE="|"}
+--~ Edge{n1,n2,SHAPE="N"}
+--~ Edge{n1,n2,SHAPE="Z"}
+--~ Edge{n1,n2,SHAPE="|"}
+
+require "plugins/tree"
+
+Set_tree{SHAPE="Z"}
+Set_canvas{w=1000,h=1000}
+
+local tr,x,y=make_tree_LR{"root",	{
+	{"left"},
+	{"right",{
+		{"r1"},
+		{"r2"},
+		{"r3",{
+			{"rr1\nddd"},
+			{"rr2"},
+			{"rr3"},
+		}},
+	}},	
+	}
+}
+
+
+tr[1].STYLE="fill:orange;"
+tr[2].STYLE="fill:red;"
+tr[2][3].STYLE="fill:grey;"
+
+local p=Edge{CLOSED=true,LABEL="FIVE",SMOOTH=false,STYLE={connection="o-o-o",fill="orange"},lx=600,ly=600}
+
+local r,a
+local cos,sin,pi= math.cos,math.sin,math.pi
+for i=1,10 do
+	r=(i%2+1)*50
+	p[i]={r*cos((i-1)*pi/5)+600,r*sin((i-1)*pi/5)+600}
+end
+
 
 --~ Export()
-Export("1.png")
+Export("tree.png")
+
+------------------------------------------------
+-- matrix
+------------------------------------------------
+
+Remove()
+
+require "plugins/matrix"
+
+local c1=Cell("c1",nil,1,1)
+local c2=Cell("c2",nil,2,2)
+local c3=Cell("c3",nil,3,3)
+local c4=Cell("c4",nil,4,4)
+
+Edge{c1,c2,c3,c4,SHAPE="L",SMOOTH=true,STYLE={connection="->"}}
+Edge{c1,c2,c3,c4,SHAPE="7",SMOOTH=true,STYLE={connection="<-"}}
+
+Export("matrix.png")
+
+------------------------------------------------
+-- flowchart
+------------------------------------------------
+
+Remove()
+
+require "plugins/flowchart"
+
+local start=state("start","D1R3")
+local p1=process("p1","D1",start)
+local p2=process("p2","D1",p1)
+local c=condition("c?","D1",p2)
+local p3=process("p3","D1",c)
+local p4=process("p4","R1",p3)
+local _end=state("end","D1",p3)
+
+Edge{start,p1,p2,c,p3,_end; SHAPE="-",STYLE={connection="->"}}
+Edge{c,p4; SHAPE="7",STYLE={connection="->"},LABEL="NO",LOFFSET="U10"}
+Edge{p4,p3; SHAPE="L",STYLE={connection="->"}}
+
+Export("flowchart.png")
+
+--~ Remove()
+
+--~ require "plugins/plot"
+
+--~ Export("plot.png")

@@ -16,11 +16,12 @@ end
 
 style2str=function(style,ref)
 	if type(style)~="table" then return style end
-	local t,st={}
+	local t,st,tp={}
 	local format,tostring=string.format,tostring
 	for k,v in pairs(style) do 
 		st=ref[k]
-		push(t,st and format(st,tostring(v)) or k..":"..v)	
+		tp=type(st)
+		push(t,tp=="function" and st(v) or tp=="string" and string.gsub(st,"@.-@",v) or k..":"..v)	
 	end
 	return table.concat(t,";")
 end
@@ -78,7 +79,7 @@ pair2curve=function(from,to,shape)
 	local fx,fy,tx,ty=from.cx,from.cy,to.cx,to.cy
 	local max,min=math.max,math.min
 	shape=shape or "-"
-	if shape=="-" or shape=="|" then
+	if shape=="-" or shape=="|" or fx==tx or fy==ty then
 		cx,cy=(fx+tx)/2,(fy+ty)/2
 		x,y=get_border(from,tx,ty);	curve[1]={x,y}
 		x,y=get_border(to,fx,fy);			curve[2]={x,y}
@@ -164,3 +165,22 @@ make_set_func=function(dst)
 	end
 end
 
+compute_border=function(nodes)
+	local min,max=math.min,math.max
+	local xmin,xmax,ymin,ymax=-math.huge,math.huge,-math.huge,math.huge
+	for i,node in ipairs(nodes) do
+		xmin=min(node.cx-node.rx)
+		xmax=max(node.cx+node.rx)
+		ymin=min(node.cy-node.ry)
+		ymax=min(node.cy+node.ry)
+	end
+	return xmin,xmax,ymin,ymax
+end
+
+copy_props=function(src,dst)
+	dst=dst or {}
+	for k,v in pairs(src) do
+		if type(k)~="number" then dst[k]=v end
+	end
+	return dst
+end
