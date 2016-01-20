@@ -83,6 +83,7 @@ end
 
 local gen_node=function(node,contents)
 	node.STYLE=style2str(node.STYLE or "",styles)
+	if node.SHAPE=="label" then return gen_label(node,contents) end
 	push(contents,eval(ENV[node.SHAPE],node))
 	if node.LABEL then 
 		node.lx,node.ly=node.cx,node.cy 
@@ -192,6 +193,7 @@ ENV.canvas=[[
 "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="@w@" height="@h@" font-size="@font_size@px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="stroke: black; stroke-width: 2px; fill: none" >
 <style> text{stroke:none; stroke-width:0px; fill:black;} </style>
+
  <defs>
 		<marker id="arrow" viewBox="0 0 20 20" refX="20" refY="10" markerUnits="strokeWidth" fill="black" markerWidth="8" markerHeight="6" orient="auto">
 			<path d="M 0 0 L 20 10 L 0 20 L 10 10 z"/>

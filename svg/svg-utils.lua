@@ -77,18 +77,13 @@ end
 pair2curve=function(from,to,shape)
 	local curve,cx,cy,x,y={}
 	local fx,fy,tx,ty=from.cx,from.cy,to.cx,to.cy
-	local max,min=math.max,math.min
 	shape=shape or "-"
-	if shape=="-" or shape=="|" or fx==tx or fy==ty then
-		cx,cy=(fx+tx)/2,(fy+ty)/2
-		x,y=get_border(from,tx,ty);	curve[1]={x,y}
-		x,y=get_border(to,fx,fy);			curve[2]={x,y}
-	elseif shape=="L" then
+	if shape=="L" and fx~=tx and fy~=ty  then
 		cx,cy=fx,ty
 		x,y=get_border(from,cx,cy);	curve[1]={x,y}
 		curve[2]={cx,cy}
 		x,y=get_border(to,cx,cy);	curve[3]={x,y}
-	elseif shape=="7" then
+	elseif shape=="7" and fy~=ty and fx~=tx then
 		cx,cy=tx,fy
 		x,y=get_border(from,cx,cy);	curve[1]={x,y}
 		curve[2]={cx,cy}
@@ -100,13 +95,17 @@ pair2curve=function(from,to,shape)
 		curve[2]={cx,fy}
 		curve[3]={cx,ty}
 		x,y=get_border(to,cx,ty);	curve[4]={x,y}
-	elseif shape=="N" or shape=="U" then
+	elseif shape=="N" then
 		cy=get_proper_mid(fy,from.ry,ty,to.ry)
 		cx=(fx+tx)/2
 		x,y=get_border(from,fx,cy);	curve[1]={x,y}
 		curve[2]={fx,cy}
 		curve[3]={tx,cy}
 		x,y=get_border(to,tx,cy);	curve[4]={x,y}
+	else -- connnect directly
+		cx,cy=(fx+tx)/2,(fy+ty)/2
+		x,y=get_border(from,tx,ty);	curve[1]={x,y}
+		x,y=get_border(to,fx,fy);			curve[2]={x,y}
 	end
 	return curve,cx,cy
 end
@@ -165,15 +164,20 @@ make_set_func=function(dst)
 	end
 end
 
-compute_border=function(nodes)
-	local min,max=math.min,math.max
-	local xmin,xmax,ymin,ymax=-math.huge,math.huge,-math.huge,math.huge
-	for i,node in ipairs(nodes) do
-		xmin=min(node.cx-node.rx)
-		xmax=max(node.cx+node.rx)
-		ymin=min(node.cy-node.ry)
-		ymax=min(node.cy+node.ry)
+get_min_max=function(arr,key)
+	local min,max=math.huge,-math.huge
+	for i,a in ipairs(arr) do
+		a=a[key]
+		if a<min then min=a 
+		elseif a>max then max=a
+		end
 	end
+	return min,max
+end
+
+compute_border=function(nodes)
+	local xmin,xmax=get_min_max(nodes,"cx")
+	local ymin,ymax=get_min_max(nodes,"cy")
 	return xmin,xmax,ymin,ymax
 end
 

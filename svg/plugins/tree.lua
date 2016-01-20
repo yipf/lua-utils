@@ -1,4 +1,4 @@
-local props={rx=25,ry=25,DX=100,DY=100,STYLE="fill:none;",TYPE="rect",SHAPE="-",SMOOTH=false}
+local props={rx=25,ry=25,DX=100,DY=100,STYLE="fill:none;",SHAPE="rect",ESHAPE="-",SMOOTH=false}
 
 Set_tree=make_set_func(props)
 
@@ -9,7 +9,7 @@ labels2tr=function(labels,nodes,level) -- prepare tree nodes and store them in `
 	level=level or 1
 	nodes=nodes or {}
 	local label,child=unpack(labels)
-	local tr=Node{LABEL=label or "node",rx=props.rx,ry=props.ry,TYPE=props.TYPE,LEVEL=level or 1}
+	local tr=Node{LABEL=label or "node",rx=props.rx,ry=props.ry,SHAPE=props.SHAPE,LEVEL=level or 1}
 	push(nodes,tr)
 	local sum,n=1
 	if child then
@@ -17,7 +17,7 @@ labels2tr=function(labels,nodes,level) -- prepare tree nodes and store them in `
 		for i,v in ipairs(child) do
 			n=labels2tr(v,nodes,level+1)
 			tr[i]=n
-			Edge{tr,n,SHAPE=props.SHAPE,SMOOTH=props.SMOOTH,STYLE=props.STYLE}
+			Edge{tr,n,SHAPE=props.ESHAPE,SMOOTH=props.SMOOTH,STYLE=props.STYLE}
 			sum=sum+n.SUM
 		end
 	end

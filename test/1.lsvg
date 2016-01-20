@@ -15,7 +15,7 @@
 
 require "plugins/tree"
 
-Set_tree{SHAPE="Z"}
+Set_tree{ESHAPE="Z"}
 Set_canvas{w=1000,h=1000}
 
 local tr,x,y=make_tree_LR{"root",	{
@@ -90,8 +90,20 @@ Edge{p4,p3; SHAPE="L",STYLE={connection="->"}}
 
 Export("flowchart.png")
 
---~ Remove()
+Remove()
 
---~ require "plugins/plot"
+require "plugins/plot"
 
---~ Export("plot.png")
+local n=30
+local data=func2data(n+1,function(x)
+	x=(x-1)/n*2*math.pi
+	return x,math.sin(x)
+end)
+
+local node=function(point)
+	return {cx=point[1],cy=point[2],SHAPE="rect",ry=3,rx=3}
+end
+
+plot2d(data,{line={connection="--"},node=node,X=10,Y=10,GRID=true})
+
+Export("plot.png")

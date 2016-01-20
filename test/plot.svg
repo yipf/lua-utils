@@ -1,0 +1,143 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1000" height="1000" font-size="20px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="stroke: black; stroke-width: 2px; fill: none" >
+<style> text{stroke:none; stroke-width:0px; fill:black;} </style>
+
+ <defs>
+		<marker id="arrow" viewBox="0 0 20 20" refX="20" refY="10" markerUnits="strokeWidth" fill="black" markerWidth="8" markerHeight="6" orient="auto">
+			<path d="M 0 0 L 20 10 L 0 20 L 10 10 z"/>
+		</marker>
+		<marker id="reverse-arrow" viewBox="0 0 20 20" refX="0" refY="10" markerUnits="strokeWidth" fill="black" markerWidth="8" markerHeight="6" orient="auto">
+			<path d="M 20 0 L 0 10 L 20 20 L 10 10 z"/>
+		</marker>
+		<marker id="point2d" viewBox="0 0 20 20" refX="10" refY="10" markerUnits="strokeWidth" fill="orange" markerWidth="6" markerHeight="6" orient="auto">
+			<circle cx="10" cy="10" r="9" />
+		</marker>
+				<marker id="point2d-black" viewBox="0 0 20 20" refX="10" refY="10" markerUnits="strokeWidth" fill="black" markerWidth="6" markerHeight="6" orient="auto">
+			<circle cx="10" cy="10" r="9" />
+		</marker>
+		<marker id="point2d-white" viewBox="0 0 20 20" refX="10" refY="10" markerUnits="strokeWidth" fill="white" markerWidth="6" markerHeight="6" orient="auto">
+			<circle cx="10" cy="10" r="9" />
+		</marker>
+		<marker id="point2d-gray" viewBox="0 0 20 20" refX="10" refY="10" markerUnits="strokeWidth" fill="#888888" markerWidth="6" markerHeight="6" orient="auto">
+			<circle cx="10" cy="10" r="9" />
+		</marker>
+		 <filter id='shadow' filterRes='50' x='0' y='0'>
+			<feGaussianBlur stdDeviation='2 2'/>
+			<feOffset dx='2' dy='2'/>
+		</filter>
+		<linearGradient x1='0%' x2='100%' id='linear0' y1='0%' y2='100%'>
+			<stop offset='0%' style='stop-color:rgb(255,255,255);stop-opacity:1'/>
+			<stop offset='100%' style='stop-color:rgb(220,220,220);stop-opacity:1'/>
+		</linearGradient>
+		<linearGradient x1='0%' x2='100%' id='multi0' y1='100%' y2='100%'>
+			<stop offset='0%' style='stop-color:rgb(255,255,255);stop-opacity:1'/>
+			<stop offset='45%' style='stop-color:rgb(255,255,255);stop-opacity:1'/>
+			<stop offset='46%' style='stop-color:rgb(0,0,0);stop-opacity:1'/>
+			<stop offset='50%' style='stop-color:rgb(0,0,0);stop-opacity:1'/>
+			<stop offset='54%' style='stop-color:rgb(0,0,0);stop-opacity:1'/>
+			<stop offset='55%' style='stop-color:rgb(220,220,220);stop-opacity:1'/>
+			<stop offset='100%' style='stop-color:rgb(220,220,220);stop-opacity:1'/>
+		</linearGradient>
+		<linearGradient x1='100%' x2='0%' id='multi1' y1='100%' y2='100%'>
+			<stop offset='0%' style='stop-color:rgb(255,255,255);stop-opacity:1'/>
+			<stop offset='45%' style='stop-color:rgb(255,255,255);stop-opacity:1'/>
+			<stop offset='46%' style='stop-color:rgb(0,0,0);stop-opacity:1'/>
+			<stop offset='50%' style='stop-color:rgb(0,0,0);stop-opacity:1'/>
+			<stop offset='54%' style='stop-color:rgb(0,0,0);stop-opacity:1'/>
+			<stop offset='55%' style='stop-color:rgb(220,220,220);stop-opacity:1'/>
+			<stop offset='100%' style='stop-color:rgb(220,220,220);stop-opacity:1'/>
+		</linearGradient>
+		<linearGradient x1='100%' x2='0%' id='multi2' y1='100%' y2='100%'>
+			<stop offset='0%' style='stop-color:rgb(255,255,255);stop-opacity:1'/>
+			<stop offset='45%' style='stop-color:rgb(255,255,255);stop-opacity:1'/>
+			<stop offset='46%' style='stop-color:rgb(0,0,0);stop-opacity:1'/>
+			<stop offset='50%' style='stop-color:rgb(0,0,0);stop-opacity:1'/>
+			<stop offset='54%' style='stop-color:rgb(0,0,0);stop-opacity:1'/>
+			<stop offset='55%' style='stop-color:rgb(255,255,255);stop-opacity:1'/>
+			<stop offset='100%' style='stop-color:rgb(255,255,255);stop-opacity:1'/>
+		</linearGradient>
+		<radialGradient id="radial0" cx="30%" cy="30%" r="50%">
+			<stop offset="0%" style="stop-color:rgb(255,255,255); stop-opacity:0" />
+			<stop offset="100%" style="stop-color:rgb(0,0,255);stop-opacity:1" />
+     </radialGradient>
+	 
+     </defs>
+<path d="M 0 600 L 800 600" style="marker-end:url(#arrow);"  />
+<text x="0" y="630" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">0.00</text>
+<text x="80" y="630" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">0.63</text>
+<text x="160" y="630" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">1.26</text>
+<text x="240" y="630" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">1.88</text>
+<text x="320" y="630" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">2.51</text>
+<text x="400" y="630" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">3.14</text>
+<text x="480" y="630" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">3.77</text>
+<text x="560" y="630" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">4.40</text>
+<text x="640" y="630" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">5.03</text>
+<text x="720" y="630" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">5.65</text>
+<text x="800" y="630" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">6.28</text>
+<path d="M 0 600 L 0 0" style="marker-end:url(#arrow);"  />
+<text x="-20" y="0" dx="-20" dy="10" style="text-anchor:end">0.99</text>
+<text x="-20" y="60" dx="-20" dy="10" style="text-anchor:end">0.80</text>
+<text x="-20" y="120" dx="-20" dy="10" style="text-anchor:end">0.60</text>
+<text x="-20" y="180" dx="-20" dy="10" style="text-anchor:end">0.40</text>
+<text x="-20" y="240" dx="-20" dy="10" style="text-anchor:end">0.20</text>
+<text x="-20" y="300" dx="-20" dy="10" style="text-anchor:end">0.00</text>
+<text x="-20" y="360" dx="-20" dy="10" style="text-anchor:end">-0.20</text>
+<text x="-20" y="420" dx="-20" dy="10" style="text-anchor:end">-0.40</text>
+<text x="-20" y="480" dx="-20" dy="10" style="text-anchor:end">-0.60</text>
+<text x="-20" y="540" dx="-20" dy="10" style="text-anchor:end">-0.80</text>
+<text x="-20" y="600" dx="-20" dy="10" style="text-anchor:end">-0.99</text>
+<path d="M 80 600 L 80 0" style="stroke-dasharray:3,3;"  />
+<path d="M 160 600 L 160 0" style="stroke-dasharray:3,3;"  />
+<path d="M 240 600 L 240 0" style="stroke-dasharray:3,3;"  />
+<path d="M 320 600 L 320 0" style="stroke-dasharray:3,3;"  />
+<path d="M 400 600 L 400 0" style="stroke-dasharray:3,3;"  />
+<path d="M 480 600 L 480 0" style="stroke-dasharray:3,3;"  />
+<path d="M 560 600 L 560 0" style="stroke-dasharray:3,3;"  />
+<path d="M 640 600 L 640 0" style="stroke-dasharray:3,3;"  />
+<path d="M 720 600 L 720 0" style="stroke-dasharray:3,3;"  />
+<path d="M 800 600 L 800 0" style="stroke-dasharray:3,3;"  />
+<path d="M 0 0 L 800 0" style="stroke-dasharray:3,3;"  />
+<path d="M 0 60 L 800 60" style="stroke-dasharray:3,3;"  />
+<path d="M 0 120 L 800 120" style="stroke-dasharray:3,3;"  />
+<path d="M 0 180 L 800 180" style="stroke-dasharray:3,3;"  />
+<path d="M 0 240 L 800 240" style="stroke-dasharray:3,3;"  />
+<path d="M 0 300 L 800 300" style="stroke-dasharray:3,3;"  />
+<path d="M 0 360 L 800 360" style="stroke-dasharray:3,3;"  />
+<path d="M 0 420 L 800 420" style="stroke-dasharray:3,3;"  />
+<path d="M 0 480 L 800 480" style="stroke-dasharray:3,3;"  />
+<path d="M 0 540 L 800 540" style="stroke-dasharray:3,3;"  />
+<path d="M 0 300 L 26.666666666667 237.28292203941 L 53.333333333333 177.30688133562 L 80 122.69311866438 L 106.66666666667 75.828517520309 L 133.33333333333 38.761285854723 L 160 13.111439559717 L 186.66666666667 3.3490153302679e-14 L 213.33333333333 0 L 240 13.111439559717 L 266.66666666667 38.761285854723 L 293.33333333333 75.828517520309 L 320 122.69311866438 L 346.66666666667 177.30688133562 L 373.33333333333 237.28292203941 L 400 300 L 426.66666666667 362.71707796059 L 453.33333333333 422.69311866438 L 480 477.30688133562 L 506.66666666667 524.17148247969 L 533.33333333333 561.23871414528 L 560 586.88856044028 L 586.66666666667 600 L 613.33333333333 600 L 640 586.88856044028 L 666.66666666667 561.23871414528 L 693.33333333333 524.17148247969 L 720 477.30688133562 L 746.66666666667 422.69311866438 L 773.33333333333 362.71707796059 L 800 300" style="stroke-dasharray:10,3;"  />
+<rect x="-3" y="297" width="6" height="6" style="" />
+<rect x="23.666666666667" y="234.28292203941" width="6" height="6" style="" />
+<rect x="50.333333333333" y="174.30688133562" width="6" height="6" style="" />
+<rect x="77" y="119.69311866438" width="6" height="6" style="" />
+<rect x="103.66666666667" y="72.828517520309" width="6" height="6" style="" />
+<rect x="130.33333333333" y="35.761285854723" width="6" height="6" style="" />
+<rect x="157" y="10.111439559717" width="6" height="6" style="" />
+<rect x="183.66666666667" y="-3" width="6" height="6" style="" />
+<rect x="210.33333333333" y="-3" width="6" height="6" style="" />
+<rect x="237" y="10.111439559717" width="6" height="6" style="" />
+<rect x="263.66666666667" y="35.761285854723" width="6" height="6" style="" />
+<rect x="290.33333333333" y="72.828517520309" width="6" height="6" style="" />
+<rect x="317" y="119.69311866438" width="6" height="6" style="" />
+<rect x="343.66666666667" y="174.30688133562" width="6" height="6" style="" />
+<rect x="370.33333333333" y="234.28292203941" width="6" height="6" style="" />
+<rect x="397" y="297" width="6" height="6" style="" />
+<rect x="423.66666666667" y="359.71707796059" width="6" height="6" style="" />
+<rect x="450.33333333333" y="419.69311866438" width="6" height="6" style="" />
+<rect x="477" y="474.30688133562" width="6" height="6" style="" />
+<rect x="503.66666666667" y="521.17148247969" width="6" height="6" style="" />
+<rect x="530.33333333333" y="558.23871414528" width="6" height="6" style="" />
+<rect x="557" y="583.88856044028" width="6" height="6" style="" />
+<rect x="583.66666666667" y="597" width="6" height="6" style="" />
+<rect x="610.33333333333" y="597" width="6" height="6" style="" />
+<rect x="637" y="583.88856044028" width="6" height="6" style="" />
+<rect x="663.66666666667" y="558.23871414528" width="6" height="6" style="" />
+<rect x="690.33333333333" y="521.17148247969" width="6" height="6" style="" />
+<rect x="717" y="474.30688133562" width="6" height="6" style="" />
+<rect x="743.66666666667" y="419.69311866438" width="6" height="6" style="" />
+<rect x="770.33333333333" y="359.71707796059" width="6" height="6" style="" />
+<rect x="797" y="297" width="6" height="6" style="" />
+</svg>

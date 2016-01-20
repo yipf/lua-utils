@@ -3,6 +3,7 @@
 "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="1000" height="1000" font-size="20px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="stroke: black; stroke-width: 2px; fill: none" >
 <style> text{stroke:none; stroke-width:0px; fill:black;} </style>
+
  <defs>
 		<marker id="arrow" viewBox="0 0 20 20" refX="20" refY="10" markerUnits="strokeWidth" fill="black" markerWidth="8" markerHeight="6" orient="auto">
 			<path d="M 0 0 L 20 10 L 0 20 L 10 10 z"/>
@@ -84,7 +85,7 @@
 <path d="M 325 500 L 350 500 L 350 400 L 375 400" style="fill:none;"  />
 <rect x="375" y="475" width="50" height="50" style="" />
 <text x="400" y="500" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">rr2</text>
-<path d="M 325 500 L 375 500" style="fill:none;"  />
+<path d="M 325 500 L 350 500 L 350 500 L 375 500" style="fill:none;"  />
 <rect x="375" y="575" width="50" height="50" style="" />
 <text x="400" y="600" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">rr3</text>
 <path d="M 325 500 L 350 500 L 350 600 L 375 600" style="fill:none;"  />
