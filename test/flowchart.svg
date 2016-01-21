@@ -65,25 +65,25 @@
 	 
      </defs>
 <ellipse cx="450" cy="100" rx="50" ry="20" style="" />
-<text x="450" y="100" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">start</text>
+<text x="450" y="100" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">start</text>
 <rect x="400" y="180" width="100" height="40" style="" />
-<text x="450" y="200" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">p1</text>
+<text x="450" y="200" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">p1</text>
 <rect x="400" y="280" width="100" height="40" style="" />
-<text x="450" y="300" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">p2</text>
+<text x="450" y="300" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">p2</text>
 <path d="M 400 400 L 450 380 L 500 400 L 450 420 z"   style="" />
-<text x="450" y="400" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">c?</text>
+<text x="450" y="400" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">c?</text>
 <rect x="400" y="480" width="100" height="40" style="" />
-<text x="450" y="500" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">p3</text>
+<text x="450" y="500" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">p3</text>
 <rect x="550" y="480" width="100" height="40" style="" />
-<text x="600" y="500" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">p4</text>
+<text x="600" y="500" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">p4</text>
 <ellipse cx="450" cy="600" rx="50" ry="20" style="" />
-<text x="450" y="600" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">end</text>
+<text x="450" y="600" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">end</text>
 <path d="M 450 120 L 450 180" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
 <path d="M 450 220 L 450 280" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
 <path d="M 450 320 L 450 380" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
 <path d="M 450 420 L 450 480" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
 <path d="M 450 520 L 450 580" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
 <path d="M 500 400 L 600 400 L 600 480" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
-<text x="600" y="400" dx="0" dy="0" style="stroke-width:1px;fill:black;text-anchor:middle;">NO</text>
+<text x="600" y="400" dx="0" dy="-3" style="stroke-width:1px;fill:black;text-anchor:middle;">NO</text>
 <path d="M 550 500 L 500 500" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
 </svg>

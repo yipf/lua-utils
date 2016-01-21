@@ -117,7 +117,7 @@ define_style(2,"...")
 data1.LABEL="cos(x)"
 data2.LABEL="sin(x)"
 
-plot2d({data1,data2},{XTics=10,YTics=10,GRID=true})
+plot2d({data1,data2},{XTics=10,YTics=10,GRID=false,XLabel="x (cm)",YLabel="y (cm)",Ymin=-1.5,Ymax=1.5,SYN=true})
 
 
 Export("plot.png")

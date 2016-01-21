@@ -64,54 +64,32 @@
      </radialGradient>
 	 
      </defs>
-<path d="M 100 700 L 900 700" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
-<path d="M 100 700 L 100 100" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
-<text x="100" y="730" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">0.00</text>
-<text x="180" y="730" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">0.63</text>
-<path d="M 180 700 L 180 100" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<text x="260" y="730" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">1.26</text>
-<path d="M 260 700 L 260 100" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<text x="340" y="730" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">1.88</text>
-<path d="M 340 700 L 340 100" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<text x="420" y="730" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">2.51</text>
-<path d="M 420 700 L 420 100" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<text x="500" y="730" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">3.14</text>
-<path d="M 500 700 L 500 100" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<text x="580" y="730" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">3.77</text>
-<path d="M 580 700 L 580 100" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<text x="660" y="730" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">4.40</text>
-<path d="M 660 700 L 660 100" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<text x="740" y="730" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">5.03</text>
-<path d="M 740 700 L 740 100" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<text x="820" y="730" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">5.65</text>
-<path d="M 820 700 L 820 100" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<text x="900" y="730" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">6.28</text>
-<path d="M 900 700 L 900 100" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<text x="76" y="700" dx="0" dy="10" style="text-anchor:end">-1.00</text>
-<text x="76" y="640" dx="0" dy="10" style="text-anchor:end">-0.80</text>
-<path d="M 100 640 L 900 640" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<text x="76" y="580" dx="0" dy="10" style="text-anchor:end">-0.60</text>
-<path d="M 100 580 L 900 580" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<text x="76" y="520" dx="0" dy="10" style="text-anchor:end">-0.40</text>
-<path d="M 100 520 L 900 520" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<text x="76" y="460" dx="0" dy="10" style="text-anchor:end">-0.20</text>
-<path d="M 100 460 L 900 460" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<text x="76" y="400" dx="0" dy="10" style="text-anchor:end">0.00</text>
-<path d="M 100 400 L 900 400" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<text x="76" y="340" dx="0" dy="10" style="text-anchor:end">0.20</text>
-<path d="M 100 340 L 900 340" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<text x="76" y="280" dx="0" dy="10" style="text-anchor:end">0.40</text>
-<path d="M 100 280 L 900 280" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<text x="76" y="220" dx="0" dy="10" style="text-anchor:end">0.60</text>
-<path d="M 100 220 L 900 220" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<text x="76" y="160" dx="0" dy="10" style="text-anchor:end">0.80</text>
-<path d="M 100 160 L 900 160" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<text x="76" y="100" dx="0" dy="10" style="text-anchor:end">1.00</text>
-<path d="M 100 100 L 900 100" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<path d="M 100 100 L 126.66666666667 106.55571977986 L 153.33333333333 125.93636270722 L 180 157.29490168752 L 206.66666666667 199.26081809234 L 233.33333333333 250 L 260 307.29490168752 L 286.66666666667 368.6414610197 L 313.33333333333 431.3585389803 L 340 492.70509831248 L 366.66666666667 550 L 393.33333333333 600.73918190766 L 420 642.70509831248 L 446.66666666667 674.06363729278 L 473.33333333333 693.44428022014 L 500 700 L 526.66666666667 693.44428022014 L 553.33333333333 674.06363729278 L 580 642.70509831248 L 606.66666666667 600.73918190766 L 633.33333333333 550 L 660 492.70509831248 L 686.66666666667 431.3585389803 L 713.33333333333 368.6414610197 L 740 307.29490168752 L 766.66666666667 250 L 793.33333333333 199.26081809234 L 820 157.29490168752 L 846.66666666667 125.93636270722 L 873.33333333333 106.55571977986 L 900 100" style="marker-start:url(#point2d);marker-end:url(#point2d);marker-mid:url(#point2d);stroke-dasharray:10,3;"  />
-<text x="980" y="120" dx="0" dy="10" style="text-anchor:end">cos(x)</text>
+<path d="M 100 464.75626111242 L 940 464.75626111242" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
+<path d="M 100 464.75626111242 L 100 81.762186944379" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
+<text x="950" y="464.75626111242" dx="0" dy="7" style="text-anchor:start">x (cm)</text>
+<text x="100" y="61.762186944379" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">y (cm)</text>
+<text x="100" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">0.00</text>
+<text x="180" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">0.63</text>
+<text x="260" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">1.26</text>
+<text x="340" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">1.88</text>
+<text x="420" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">2.51</text>
+<text x="500" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">3.14</text>
+<text x="580" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">3.77</text>
+<text x="660" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">4.40</text>
+<text x="740" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">5.03</text>
+<text x="820" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">5.65</text>
+<text x="900" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">6.28</text>
+<text x="76" y="464.75626111242" dx="0" dy="7" style="text-anchor:end">-1.50</text>
+<text x="76" y="391.80500888993" dx="0" dy="7" style="text-anchor:end">-0.90</text>
+<text x="76" y="318.85375666745" dx="0" dy="7" style="text-anchor:end">-0.30</text>
+<text x="76" y="245.90250444497" dx="0" dy="7" style="text-anchor:end">0.30</text>
+<text x="76" y="172.95125222248" dx="0" dy="7" style="text-anchor:end">0.90</text>
+<text x="76" y="100" dx="0" dy="7" style="text-anchor:end">1.50</text>
+<rect x="916" y="105" width="128" height="50" style="" />
+<path d="M 100 160.7927101854 L 126.66666666667 163.44964333629 L 153.33333333333 171.30432206089 L 180 184.013459208 L 206.66666666667 201.02160449909 L 233.33333333333 221.58542037081 L 260 244.80616939341 L 286.66666666667 269.6689934091 L 313.33333333333 295.08726770332 L 340 319.95009171901 L 366.66666666667 343.17084074161 L 393.33333333333 363.73465661332 L 420 380.74280190441 L 446.66666666667 393.45193905152 L 473.33333333333 401.30661777612 L 500 403.96355092701 L 526.66666666667 401.30661777612 L 553.33333333333 393.45193905152 L 580 380.74280190441 L 606.66666666667 363.73465661332 L 633.33333333333 343.17084074161 L 660 319.95009171901 L 686.66666666667 295.08726770332 L 713.33333333333 269.6689934091 L 740 244.80616939341 L 766.66666666667 221.58542037081 L 793.33333333333 201.02160449909 L 820 184.013459208 L 846.66666666667 171.30432206089 L 873.33333333333 163.44964333629 L 900 160.7927101854" style="marker-start:url(#point2d);marker-end:url(#point2d);marker-mid:url(#point2d);stroke-dasharray:10,3;"  />
+<text x="980" y="120" dx="0" dy="7" style="text-anchor:end">cos(x)</text>
 <path d="M 990 120 L 1010 120 L 1030 120" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#point2d);stroke-dasharray:10,3;"  />
-<path d="M 100 400 L 126.66666666667 337.62649275467 L 153.33333333333 277.97900707726 L 180 223.66442431226 L 206.66666666667 177.05655235678 L 233.33333333333 140.19237886467 L 260 114.68304511145 L 286.66666666667 101.64343138952 L 313.33333333333 101.64343138952 L 340 114.68304511145 L 366.66666666667 140.19237886467 L 393.33333333333 177.05655235678 L 420 223.66442431226 L 446.66666666667 277.97900707726 L 473.33333333333 337.62649275467 L 500 400 L 526.66666666667 462.37350724533 L 553.33333333333 522.02099292274 L 580 576.33557568774 L 606.66666666667 622.94344764322 L 633.33333333333 659.80762113533 L 660 685.31695488855 L 686.66666666667 698.35656861048 L 713.33333333333 698.35656861048 L 740 685.31695488855 L 766.66666666667 659.80762113533 L 793.33333333333 622.94344764322 L 820 576.33557568774 L 846.66666666667 522.02099292274 L 873.33333333333 462.37350724533 L 900 400" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
-<text x="980" y="140" dx="0" dy="10" style="text-anchor:end">sin(x)</text>
+<path d="M 100 282.37813055621 L 126.66666666667 257.09910022813 L 153.33333333333 232.92488482763 L 180 210.91201356847 L 206.66666666667 192.02255455415 L 233.33333333333 177.08206778528 L 260 166.74352422607 L 286.66666666667 161.45876783989 L 313.33333333333 161.45876783989 L 340 166.74352422607 L 366.66666666667 177.08206778528 L 393.33333333333 192.02255455415 L 420 210.91201356847 L 446.66666666667 232.92488482763 L 473.33333333333 257.09910022813 L 500 282.37813055621 L 526.66666666667 307.65716088429 L 553.33333333333 331.83137628479 L 580 353.84424754395 L 606.66666666667 372.73370655827 L 633.33333333333 387.67419332714 L 660 398.01273688635 L 686.66666666667 403.29749327253 L 713.33333333333 403.29749327253 L 740 398.01273688635 L 766.66666666667 387.67419332714 L 793.33333333333 372.73370655827 L 820 353.84424754395 L 846.66666666667 331.83137628479 L 873.33333333333 307.65716088429 L 900 282.37813055621" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
+<text x="980" y="140" dx="0" dy="7" style="text-anchor:end">sin(x)</text>
 <path d="M 990 140 L 1010 140 L 1030 140" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
 </svg>

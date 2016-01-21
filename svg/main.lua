@@ -76,7 +76,7 @@ local gen_label=function(label,contents)
 	local mid=#lines/2
 	label.dx=dx
 	for i,line in ipairs(lines) do
-		label.dy=(i-mid)*(canvas.font_size)+dy
+		label.dy=(i-mid)*(canvas.font_size)+dy-3
 		label.TEXT=line
 		push(contents,eval(ENV["label"],label))
 	end
