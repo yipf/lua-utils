@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
 "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="1000" height="1000" font-size="20px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="stroke: black; stroke-width: 2px; fill: none" >
+<svg width="1600" height="1200" font-size="20px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="stroke: black; stroke-width: 2px; fill: none" >
 <style> text{stroke:none; stroke-width:0px; fill:black;} </style>
 
  <defs>

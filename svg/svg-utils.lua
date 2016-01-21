@@ -164,8 +164,8 @@ make_set_func=function(dst)
 	end
 end
 
-get_min_max=function(arr,key)
-	local min,max=math.huge,-math.huge
+get_min_max=function(arr,key,min,max)
+	min,max=min or math.huge,max or -math.huge
 	for i,a in ipairs(arr) do
 		a=a[key]
 		if a<min then min=a 

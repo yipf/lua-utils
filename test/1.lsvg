@@ -95,15 +95,29 @@ Remove()
 require "plugins/plot"
 
 local n=30
-local data=func2data(n+1,function(x)
+local data1=func2data(n+1,function(x)
 	x=(x-1)/n*2*math.pi
-	return x,math.sin(x)
+	return x,math.cos(x)
 end)
 
 local node=function(point)
 	return {cx=point[1],cy=point[2],SHAPE="rect",ry=3,rx=3}
 end
 
-plot2d(data,{line={connection="--"},node=node,X=10,Y=10,GRID=true})
+local n=30
+local data2=func2data(n+1,function(x)
+	x=(x-1)/n*2*math.pi
+	return x,math.sin(x)
+end)
+
+
+define_style(1,"- -","point2d")
+define_style(2,"...")
+
+data1.LABEL="cos(x)"
+data2.LABEL="sin(x)"
+
+plot2d({data1,data2},{XTics=10,YTics=10,GRID=true})
+
 
 Export("plot.png")

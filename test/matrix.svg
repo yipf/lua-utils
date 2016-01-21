@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
 "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="1000" height="1000" font-size="20px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="stroke: black; stroke-width: 2px; fill: none" >
+<svg width="1600" height="1200" font-size="20px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="stroke: black; stroke-width: 2px; fill: none" >
 <style> text{stroke:none; stroke-width:0px; fill:black;} </style>
 
  <defs>
@@ -72,10 +72,10 @@
 <text x="300" y="300" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">c3</text>
 <ellipse cx="400" cy="400" rx="25" ry="25" style="" />
 <text x="400" y="400" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">c4</text>
-<path d="M 100 125 Q 100 200 175 200" style="marker-end:url(#arrow);"  />
-<path d="M 200 225 Q 200 300 275 300" style="marker-end:url(#arrow);"  />
-<path d="M 300 325 Q 300 400 375 400" style="marker-end:url(#arrow);"  />
-<path d="M 125 100 Q 200 100 200 175" style="marker-start:url(#reverse-arrow);"  />
-<path d="M 225 200 Q 300 200 300 275" style="marker-start:url(#reverse-arrow);"  />
-<path d="M 325 300 Q 400 300 400 375" style="marker-start:url(#reverse-arrow);"  />
+<path d="M 100 125 Q 100 200 175 200" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
+<path d="M 200 225 Q 200 300 275 300" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
+<path d="M 300 325 Q 300 400 375 400" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
+<path d="M 125 100 Q 200 100 200 175" style="marker-start:url(#reverse-arrow);marker-end:url(#nil);marker-mid:url(#nil);"  />
+<path d="M 225 200 Q 300 200 300 275" style="marker-start:url(#reverse-arrow);marker-end:url(#nil);marker-mid:url(#nil);"  />
+<path d="M 325 300 Q 400 300 400 375" style="marker-start:url(#reverse-arrow);marker-end:url(#nil);marker-mid:url(#nil);"  />
 </svg>

@@ -23,5 +23,11 @@ Eval "A==B*A+(A-B)"
 Eval "A*B==B*A"
 Eval "A^B==B^A"
 
+--~ local str=[[<-o->]]
+
+--~ local pat="^([^%-%s%.]-)[%-%s%.]+([^%-%s%.]-)[%-%s%.]*([^%-%s%.]-)$"
+
+--~ print(string.match(str,pat))
+
 
 

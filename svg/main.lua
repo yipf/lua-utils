@@ -7,6 +7,8 @@ local push=table.insert
 
 local char2obj={["<"]="reverse-arrow",["o"]="point2d",[">"]="arrow"}
 
+local match=string.match
+
 local styles={
 	dashed="stroke-dasharray:10,3",	
 	dotted="stroke-dasharray:3,3",
@@ -15,13 +17,13 @@ local styles={
 	nofill="fill:none",
 	
 	connection=function(str)
-		local s,m,e=string.match(str,"^([o%<%>]*)(.-)([o%<%>]*)$")
+		local s,m,e=string.match(str,"^([^%-%s%.]-)[%-%s%.]+([^%-%s%.]-)[%-%s%.]*([^%-%s%.]-)$")
 		local ss=""
-		if string.len(s)>0 then ss=ss..string.format("marker-start:url(#%s);",char2obj[string.sub(s,1,1)])		end
-		if string.len(e)>0 then ss=ss..string.format("marker-end:url(#%s);",char2obj[string.sub(e,1,1)])		end
-		if string.match(m,"o") then ss=ss.."marker-mid:url(#point2d);"  end
-		if string.match(m,"%-%-") then ss=ss.."stroke-dasharray:10,3;"
-		elseif  string.match(m,"%.%.") then ss=ss.."stroke-dasharray:3,3;"  end
+		s=match(s,"%S+");		if s~="" then ss=ss..string.format("marker-start:url(#%s);",char2obj[s] or s)		end
+		e=match(e,"%S+");	if e~="" then ss=ss..string.format("marker-end:url(#%s);",char2obj[e] or e)		end
+		m=match(m,"%S+");	if m~="" then ss=ss..string.format("marker-mid:url(#%s);",char2obj[m] or m) end
+		if string.match(str,"%-%s+%-") then ss=ss.."stroke-dasharray:10,3;"
+		elseif  string.match(str,"%.%.") then ss=ss.."stroke-dasharray:3,3;"  end
 		return ss
 	end,
 	
@@ -38,7 +40,7 @@ local styles={
 
 }
 
-local canvas={w=800,h=600,font_size=20}
+local canvas={width=1600,height=1200,font_size=20}
 
 local objects={}
 
@@ -65,6 +67,7 @@ end
 local is_edge=function(obj) return obj.EDGE end
 
 local gen_label=function(label,contents)
+	label.lx,label.ly=label.lx or  label.cx ,label.ly or label.cy
 	local dx,dy=label.dx or 0,label.dy or 0
 	if label.LOFFSET then dx,dy=offset2xy(label.LOFFSET,dx,dy) end
 	label.LSTYLE=style2str(label.LSTYLE or "stroke-width:1px;fill:black;text-anchor:middle;",styles)
@@ -86,13 +89,12 @@ local gen_node=function(node,contents)
 	if node.SHAPE=="label" then return gen_label(node,contents) end
 	push(contents,eval(ENV[node.SHAPE],node))
 	if node.LABEL then 
-		node.lx,node.ly=node.cx,node.cy 
 		gen_label(node,contents)
 	end
 end
 
 local gen_edge=function(edge,contents)
-	edge.STYLE=style2str(edge.STYLE or [[marker-end:url(#arrow);]],styles)
+	edge.STYLE=style2str(edge.STYLE or "",styles)
 	local shape,n,curve=edge.SHAPE,#edge
 	if shape and n>1 then -- if it is a edge form point-to-point
 		for i=1,n-1 do
@@ -185,13 +187,14 @@ ENV={
 	]],
 	-- label elements
 	["label"]=[[<text x="@lx@" y="@ly@" dx="@dx@" dy="@dy@" style="@LSTYLE or ''@">@TEXT@</text>]],
+	-- marker
 }
 
 ENV.canvas=[[
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
 "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="@w@" height="@h@" font-size="@font_size@px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="stroke: black; stroke-width: 2px; fill: none" >
+<svg width="@width@" height="@height@" font-size="@font_size@px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="stroke: black; stroke-width: 2px; fill: none" >
 <style> text{stroke:none; stroke-width:0px; fill:black;} </style>
 
  <defs>

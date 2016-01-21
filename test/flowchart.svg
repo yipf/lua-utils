@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
 "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="1000" height="1000" font-size="20px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="stroke: black; stroke-width: 2px; fill: none" >
+<svg width="1600" height="1200" font-size="20px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="stroke: black; stroke-width: 2px; fill: none" >
 <style> text{stroke:none; stroke-width:0px; fill:black;} </style>
 
  <defs>
@@ -78,12 +78,12 @@
 <text x="600" y="500" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">p4</text>
 <ellipse cx="450" cy="600" rx="50" ry="20" style="" />
 <text x="450" y="600" dx="0" dy="10" style="stroke-width:1px;fill:black;text-anchor:middle;">end</text>
-<path d="M 450 120 L 450 180" style="marker-end:url(#arrow);"  />
-<path d="M 450 220 L 450 280" style="marker-end:url(#arrow);"  />
-<path d="M 450 320 L 450 380" style="marker-end:url(#arrow);"  />
-<path d="M 450 420 L 450 480" style="marker-end:url(#arrow);"  />
-<path d="M 450 520 L 450 580" style="marker-end:url(#arrow);"  />
-<path d="M 500 400 L 600 400 L 600 480" style="marker-end:url(#arrow);"  />
+<path d="M 450 120 L 450 180" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
+<path d="M 450 220 L 450 280" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
+<path d="M 450 320 L 450 380" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
+<path d="M 450 420 L 450 480" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
+<path d="M 450 520 L 450 580" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
+<path d="M 500 400 L 600 400 L 600 480" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
 <text x="600" y="400" dx="0" dy="0" style="stroke-width:1px;fill:black;text-anchor:middle;">NO</text>
-<path d="M 550 500 L 500 500" style="marker-end:url(#arrow);"  />
+<path d="M 550 500 L 500 500" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
 </svg>
