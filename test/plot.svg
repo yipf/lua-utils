@@ -62,34 +62,58 @@
 			<stop offset="0%" style="stop-color:rgb(255,255,255); stop-opacity:0" />
 			<stop offset="100%" style="stop-color:rgb(0,0,255);stop-opacity:1" />
      </radialGradient>
-	 
+	 <marker id="triangle" viewBox="0 0 20 20" refX="10" refY="10" markerUnits="strokeWidth" fill="blue" markerWidth="8" markerHeight="8" >
+			<path d="M 10 5 L 5 15 L 15 15 Z"/></marker><marker id="cross" viewBox="0 0 20 20" refX="10" refY="10" markerUnits="strokeWidth" fill="none" markerWidth="8" markerHeight="8" >
+			<path d="M 10 0 L 10 20 M 0 10 L 20 10 "/></marker><marker id="square" viewBox="0 0 20 20" refX="10" refY="10" markerUnits="strokeWidth" fill="red" markerWidth="8" markerHeight="8" >
+			<path d="M 5 5 L 5 15 L 15 15 L 15 5 Z"/></marker><marker id="diamond" viewBox="0 0 20 20" refX="10" refY="10" markerUnits="strokeWidth" fill="red" markerWidth="8" markerHeight="8" >
+			<path d="M 5 5 L 5 15 L 15 15 L 15 5 Z"/></marker><marker id="circle" viewBox="0 0 20 20" refX="10" refY="10" markerUnits="strokeWidth" fill="green" markerWidth="8" markerHeight="8" >
+			<path d="M 20 10 A 5 5 0 0 0 20 10 Z "/></marker>
      </defs>
-<path d="M 100 464.75626111242 L 940 464.75626111242" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
-<path d="M 100 464.75626111242 L 100 81.762186944379" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
-<text x="950" y="464.75626111242" dx="0" dy="7" style="text-anchor:start">x (cm)</text>
-<text x="100" y="61.762186944379" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">y (cm)</text>
-<text x="100" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">0.00</text>
-<text x="180" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">0.63</text>
-<text x="260" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">1.26</text>
-<text x="340" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">1.88</text>
-<text x="420" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">2.51</text>
-<text x="500" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">3.14</text>
-<text x="580" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">3.77</text>
-<text x="660" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">4.40</text>
-<text x="740" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">5.03</text>
-<text x="820" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">5.65</text>
-<text x="900" y="482.99407416804" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">6.28</text>
-<text x="76" y="464.75626111242" dx="0" dy="7" style="text-anchor:end">-1.50</text>
-<text x="76" y="391.80500888993" dx="0" dy="7" style="text-anchor:end">-0.90</text>
-<text x="76" y="318.85375666745" dx="0" dy="7" style="text-anchor:end">-0.30</text>
-<text x="76" y="245.90250444497" dx="0" dy="7" style="text-anchor:end">0.30</text>
-<text x="76" y="172.95125222248" dx="0" dy="7" style="text-anchor:end">0.90</text>
+<path d="M 100 457.07200952192 L 940 457.07200952192" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
+<path d="M 100 457.07200952192 L 100 82.146399523904" style="marker-start:url(#nil);marker-end:url(#arrow);marker-mid:url(#nil);"  />
+<text x="950" y="457.07200952192" dx="0" dy="7" style="text-anchor:start">x (cm)</text>
+<text x="100" y="62.146399523904" dx="0" dy="7" style="">y (cm)</text>
+<text x="100" y="474.92560999802" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">-0.10</text>
+<text x="180" y="474.92560999802" dx="0" dy="7" style="">0.61</text>
+<text x="260" y="474.92560999802" dx="0" dy="7" style="">1.32</text>
+<text x="340" y="474.92560999802" dx="0" dy="7" style="">2.03</text>
+<text x="420" y="474.92560999802" dx="0" dy="7" style="">2.74</text>
+<text x="500" y="474.92560999802" dx="0" dy="7" style="">3.45</text>
+<text x="580" y="474.92560999802" dx="0" dy="7" style="">4.16</text>
+<text x="660" y="474.92560999802" dx="0" dy="7" style="">4.87</text>
+<text x="740" y="474.92560999802" dx="0" dy="7" style="">5.58</text>
+<text x="820" y="474.92560999802" dx="0" dy="7" style="">6.29</text>
+<text x="900" y="474.92560999802" dx="0" dy="7" style="">7.00</text>
+<text x="76" y="457.07200952192" dx="0" dy="7" style="text-anchor:end">-1.50</text>
+<text x="76" y="367.80400714144" dx="0" dy="7" style="text-anchor:end">-0.75</text>
+<text x="76" y="278.53600476096" dx="0" dy="7" style="text-anchor:end">0.00</text>
+<text x="76" y="189.26800238048" dx="0" dy="7" style="text-anchor:end">0.75</text>
 <text x="76" y="100" dx="0" dy="7" style="text-anchor:end">1.50</text>
 <rect x="916" y="105" width="128" height="50" style="" />
-<path d="M 100 160.7927101854 L 126.66666666667 163.44964333629 L 153.33333333333 171.30432206089 L 180 184.013459208 L 206.66666666667 201.02160449909 L 233.33333333333 221.58542037081 L 260 244.80616939341 L 286.66666666667 269.6689934091 L 313.33333333333 295.08726770332 L 340 319.95009171901 L 366.66666666667 343.17084074161 L 393.33333333333 363.73465661332 L 420 380.74280190441 L 446.66666666667 393.45193905152 L 473.33333333333 401.30661777612 L 500 403.96355092701 L 526.66666666667 401.30661777612 L 553.33333333333 393.45193905152 L 580 380.74280190441 L 606.66666666667 363.73465661332 L 633.33333333333 343.17084074161 L 660 319.95009171901 L 686.66666666667 295.08726770332 L 713.33333333333 269.6689934091 L 740 244.80616939341 L 766.66666666667 221.58542037081 L 793.33333333333 201.02160449909 L 820 184.013459208 L 846.66666666667 171.30432206089 L 873.33333333333 163.44964333629 L 900 160.7927101854" style="marker-start:url(#point2d);marker-end:url(#point2d);marker-mid:url(#point2d);stroke-dasharray:10,3;"  />
+<rect x="101.2676056338" y="159.51200158699" width="10" height="297.56000793493" style="fill:orange;" />
+<rect x="172.06405979921" y="182.24356345468" width="10" height="274.82844606724" style="fill:orange;" />
+<rect x="242.86051396461" y="241.75556504166" width="10" height="215.31644448026" style="fill:orange;" />
+<rect x="313.65696813001" y="315.31644448026" width="10" height="141.75556504166" style="fill:orange;" />
+<rect x="384.45342229542" y="374.82844606724" width="10" height="82.243563454678" style="fill:orange;" />
+<rect x="455.24987646082" y="397.56000793493" width="10" height="59.512001586987" style="fill:orange;" />
+<rect x="526.04633062623" y="374.82844606724" width="10" height="82.243563454678" style="fill:orange;" />
+<rect x="596.84278479163" y="315.31644448026" width="10" height="141.75556504166" style="fill:orange;" />
+<rect x="667.63923895703" y="241.75556504166" width="10" height="215.31644448026" style="fill:orange;" />
+<rect x="738.43569312244" y="182.24356345468" width="10" height="274.82844606724" style="fill:orange;" />
+<rect x="809.23214728784" y="159.51200158699" width="10" height="297.56000793493" style="fill:orange;" />
 <text x="980" y="120" dx="0" dy="7" style="text-anchor:end">cos(x)</text>
-<path d="M 990 120 L 1010 120 L 1030 120" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#point2d);stroke-dasharray:10,3;"  />
-<path d="M 100 282.37813055621 L 126.66666666667 257.09910022813 L 153.33333333333 232.92488482763 L 180 210.91201356847 L 206.66666666667 192.02255455415 L 233.33333333333 177.08206778528 L 260 166.74352422607 L 286.66666666667 161.45876783989 L 313.33333333333 161.45876783989 L 340 166.74352422607 L 366.66666666667 177.08206778528 L 393.33333333333 192.02255455415 L 420 210.91201356847 L 446.66666666667 232.92488482763 L 473.33333333333 257.09910022813 L 500 282.37813055621 L 526.66666666667 307.65716088429 L 553.33333333333 331.83137628479 L 580 353.84424754395 L 606.66666666667 372.73370655827 L 633.33333333333 387.67419332714 L 660 398.01273688635 L 686.66666666667 403.29749327253 L 713.33333333333 403.29749327253 L 740 398.01273688635 L 766.66666666667 387.67419332714 L 793.33333333333 372.73370655827 L 820 353.84424754395 L 846.66666666667 331.83137628479 L 873.33333333333 307.65716088429 L 900 282.37813055621" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
+<rect x="1006" y="112" width="8" height="16" style="fill:orange;" />
+<rect x="111.2676056338" y="278.53600476096" width="10" height="178.53600476096" style="fill:green;" />
+<rect x="182.06405979921" y="208.57545102649" width="10" height="248.49655849543" style="fill:green;" />
+<rect x="252.86051396461" y="165.33745094682" width="10" height="291.7345585751" style="fill:green;" />
+<rect x="323.65696813001" y="165.33745094682" width="10" height="291.7345585751" style="fill:green;" />
+<rect x="394.45342229542" y="208.57545102649" width="10" height="248.49655849543" style="fill:green;" />
+<rect x="465.24987646082" y="278.53600476096" width="10" height="178.53600476096" style="fill:green;" />
+<rect x="536.04633062623" y="348.49655849543" width="10" height="108.57545102649" style="fill:green;" />
+<rect x="606.84278479163" y="391.7345585751" width="10" height="65.337450946818" style="fill:green;" />
+<rect x="677.63923895703" y="391.7345585751" width="10" height="65.337450946818" style="fill:green;" />
+<rect x="748.43569312244" y="348.49655849543" width="10" height="108.57545102649" style="fill:green;" />
+<rect x="819.23214728784" y="278.53600476096" width="10" height="178.53600476096" style="fill:green;" />
 <text x="980" y="140" dx="0" dy="7" style="text-anchor:end">sin(x)</text>
-<path d="M 990 140 L 1010 140 L 1030 140" style="marker-start:url(#nil);marker-end:url(#nil);marker-mid:url(#nil);stroke-dasharray:3,3;"  />
+<rect x="1006" y="132" width="8" height="16" style="fill:green;" />
 </svg>

@@ -188,6 +188,7 @@ ENV={
 	-- label elements
 	["label"]=[[<text x="@lx@" y="@ly@" dx="@dx@" dy="@dy@" style="@LSTYLE or ''@">@TEXT@</text>]],
 	-- marker
+	
 }
 
 ENV.canvas=[[
