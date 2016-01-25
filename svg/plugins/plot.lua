@@ -1,5 +1,13 @@
 local id=function(x) return x,x end
 
+func2data=function(n,func)
+	local data={}
+	for i=1,n do
+		data[i]={func(i,n)}
+	end
+	return data
+end
+
 local DEFS=""
 
 local MARKER_FMT=[[<marker id=%q viewBox="0 0 20 20" refX="10" refY="10" markerUnits="strokeWidth" fill=%q markerWidth="8" markerHeight="8" >
@@ -10,12 +18,20 @@ Add_marker=function(key,color,path)
 	Set_canvas{DEFS=DEFS}
 end
 
-func2data=function(n,func)
-	local data={}
-	func=func or id
-	for i=1,n do		data[i]={func(i)} 	end
+file2data=function(filepath,data,pattern)
+	local data,pattern=data or {},pattern or "(%S+)%s+(%S+)"
+	local push,match=table.insert,string.match
+	local vector
+	for line in io.lines(filepath) do
+		vector={match(line,pattern)}
+		if #vector>0 then
+			for i,v in ipairs(vector) do vector[i]=tonumber(v) or v	end
+		end
+		push(data,vector)
+	end
 	return data
 end
+
 
 require "svg-utils"
 
@@ -23,7 +39,7 @@ Add_marker("triangle","blue","M 10 5 L 5 15 L 15 15 Z")
 Add_marker("cross","none","M 10 0 L 10 20 M 0 10 L 20 10 ")
 Add_marker("square","red","M 5 5 L 5 15 L 15 15 L 15 5 Z")
 Add_marker("diamond","red","M 5 5 L 5 15 L 15 15 L 15 5 Z")
-Add_marker("circle","green","M 20 10 A 5 5 0 0 0 20 10 Z ") --(rx ry x-axis-rotation large-arc-flag sweep-flag x y)+
+Add_marker("circle","green","M 5 10 A 5 5 0 0 0 15 10 A 5 5 0 0 0 5 10 Z ") --(rx ry x-axis-rotation large-arc-flag sweep-flag x y)+
 
 
 local draw_label=function(text,x,y,align)
@@ -79,24 +95,27 @@ local draw_coordinate=function(props)
 	local x,y=_01_xy_(0,1.05)
 	draw_label(props.YLabel or "Y",x,y-20)
 	offset_xlabel,offset_ylabel=props.offset_xlabel or offset_xlabel,props.offset_ylabel or offset_ylabel
+	local labels,a
 	if nx then
+		labels=props.XLabels
 		x,y=_01_xy_(0,offset_xlabel)
-		Node{lx=x,ly=y,SHAPE="label",LABEL=number2string(xmin)}
+		draw_label(labels and (labels[0] or "") or number2string(xmin),x,y)
 		for i=1,nx do	
-			i=i/nx
-			x,y=_01_xy_(i,offset_xlabel)
-			draw_label(number2string(xmin+i*(xmax-xmin)),x,y)
-			if GRID then Edge{{_01_xy_(i,0)},{_01_xy_(i,1)},STYLE={connection="..."}} end
+			a=i/nx
+			x,y=_01_xy_(a,offset_xlabel)
+			draw_label(labels and (labels[i] or "") or number2string(xmin+a*(xmax-xmin)),x,y)
+			if GRID then Edge{{_01_xy_(a,0)},{_01_xy_(a,1)},STYLE={connection="..."}} end
 		end
 	end
 	if ny then
+		labels=props.YLabels
 		x,y=_01_xy_(offset_ylabel,0)
-		draw_label(number2string(ymin),x,y,"end")
+		draw_label(labels and (labels[0] or "") or number2string(ymin),x,y,"end")
 		for i=1,ny do	
-			i=i/ny
-			x,y=_01_xy_(offset_ylabel,i)
-			draw_label(number2string(ymin+i*(ymax-ymin)),x,y,"end")
-			if GRID then Edge{{_01_xy_(0,i)},{_01_xy_(1,i)},STYLE={connection="..."}} end
+			a=i/ny
+			x,y=_01_xy_(offset_ylabel,a)
+			draw_label(labels and (labels[i] or "") or number2string(ymin+a*(ymax-ymin)),x,y,"end")
+			if GRID then Edge{{_01_xy_(0,a)},{_01_xy_(1,a)},STYLE={connection="..."}} end
 		end
 	end
 end
@@ -106,7 +125,8 @@ make_line_point_style=function(line,marker)
 	return	{connection=marker..line..marker..line..marker},{connection=line..marker..line}
 end
 
-plot2d=function(dataset,props)
+plot2d=function(dataset)
+	local props=dataset or {}
 	-- compute xmin,xmax,ymin,ymax
 	local _xmax,_xmin,_ymax,_ymin
 	for i,data in ipairs(dataset) do
@@ -116,7 +136,6 @@ plot2d=function(dataset,props)
 	xmin,xmax=get_min(props.Xmin,_xmin,xmin), get_max(props.Xmax,_xmax,xmax)
 	ymin,ymax=get_min(props.Ymin,_ymin,ymin), get_max(props.Ymax,_ymax,ymax)
 	-- draw coordinate system
-	props=props or {}
 	draw_coordinate(props)
 	-- draw data
 	x,y=_01_xy_(1.1,1) -- sample

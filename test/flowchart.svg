@@ -66,7 +66,10 @@
      </defs>
 <ellipse cx="450" cy="100" rx="50" ry="20" style="" />
 <text x="450" y="100" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">start</text>
-<rect x="400" y="180" width="100" height="40" style="" />
+	 <g style=""  >
+		<path d="M 450 200 m -50 10 a 50 10 0 0 0 100 0 l 0 -30 a 50 10 0 0 0 -100 0 Z" />
+		<path d="M 450 200 m -50 -20 a 50 10 0 0 0 100 0 "/>
+	 </g>
 <text x="450" y="200" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">p1</text>
 <rect x="400" y="280" width="100" height="40" style="" />
 <text x="450" y="300" dx="0" dy="7" style="stroke-width:1px;fill:black;text-anchor:middle;">p2</text>

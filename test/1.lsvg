@@ -88,6 +88,8 @@ Edge{start,p1,p2,c,p3,_end; SHAPE="-",STYLE={connection="->"}}
 Edge{c,p4; SHAPE="7",STYLE={connection="->"},LABEL="NO",LOFFSET="U10"}
 Edge{p4,p3; SHAPE="L",STYLE={connection="->"}}
 
+p1.SHAPE="database"
+
 Export("flowchart.png")
 
 Remove()
@@ -115,14 +117,14 @@ data1.TYPE="bar"
 data1.STYLE="fill:orange;"
 
 data2.LABEL="sin(x)"
---~ data2.TYPE="curve"
---~ data2.STYLE,data2.SAMPLE_STYLE=make_line_point_style("...","square")
+data2.TYPE="curve"
+data2.STYLE,data2.SAMPLE_STYLE=make_line_point_style("...","circle")
 --~ data2.TYPE="block"
 --~ data2.STYLE="fill:blue;opacity:0.5;"
-data2.TYPE="bar"
-data2.STYLE="fill:green;"
+--~ data2.TYPE="bar"
+--~ data2.STYLE="fill:green;"
 
-plot2d({data1,data2},{XTics=10,YTics=10,GRID=false,XLabel="x (cm)",YLabel="y (cm)",Ymin=-1.5,Ymax=1.5,Xmin=-0.1,Xmax=7,SYN=true})
+plot2d({data1,data2;  XTics=10,YTics=10,GRID=false,XLabel="x (cm)",YLabel="y (cm)",Ymin=-1.5,Ymax=1.5,Xmin=-0.1,Xmax=7,SYN=true,})
 
 
 Export("plot.png")

@@ -178,13 +178,10 @@ ENV={
 	addbox=[[<ellipse cx="@cx@" cy="@cy@" rx="@rx@" ry="@ry@"  STYLE="@STYLE or ''@" /><path d="M @cx-rx@ @cy@ L @cx+rx@ @cy@ M @cx@ @cy-ry@ L @cx@ @cy+ry@" />]],
 	diamond=[[<path d="M @cx-rx@ @cy@ L @cx@ @cy-ry@ L @cx+rx@ @cy@ L @cx@ @cy+ry@ z"   style="@STYLE or ''@" />]],
 	database=[[
-	 <g style="@STYLE or ''@;fill:white;">
-	 <ellipse cx="@cx@" cy="@cy+ry/2@" rx="@rx@" ry="@ry/2@"  />
-	 <rect x="@cx-rx@" y="@cy-ry@" width="@rx+rx@" height="@ry+ry/2@" style="stroke:none;" />
-	 <ellipse cx="@cx@" cy="@cy-ry@" rx="@rx@" ry="@ry/2@"   />
-	 <path d="M @cx-rx@ @cy-ry@ L @cx-rx@ @cy+ry/2@ M @cx+rx@ @cy-ry@ L @cx+rx@ @cy+ry/2@" />
-	 </g>
-	]],
+	 <g style="@STYLE@"  >
+		<path d="M @cx@ @cy@ m @-rx@ @0.5*ry@ a @rx@ @0.5*ry@ 0 0 0 @rx+rx@ 0 l 0 @-1.5*ry@ a @rx@ @0.5*ry@ 0 0 0 @-rx-rx@ 0 Z" />
+		<path d="M @cx@ @cy@ m @-rx@ @-ry@ a @rx@ @0.5*ry@ 0 0 0 @rx+rx@ 0 "/>
+	 </g>]],
 	-- label elements
 	["label"]=[[<text x="@lx@" y="@ly@" dx="@dx@" dy="@dy@" style="@LSTYLE or ''@">@TEXT@</text>]],
 	-- marker
@@ -268,3 +265,4 @@ if filepath then
 else
 	print("Need valid file path!")
 end
+
