@@ -168,17 +168,19 @@ local TEMP_DIR_FMT="/home/yipf/lua-utils/org/templates/%s.lua"
 local template,input=...
 assert(template,"At least a filepath must be given!")
 if not input then input=template; template="html" end
-local output=format("%s-%s.%s",match(input,"^(.-)%.?[^%.]*$"),template,ENV.EXT or template)
 -- setup ENV
 print(format("Setting up Envrionment of %q",template))
 local t=dofile(format(TEMP_DIR_FMT,template))
 for k,v in pairs(t) do 	ENV[k]=v end
+local name=format("%s-%s",match(input,"^(.-)%.?[^%.]*$"),template)
+local output=format("%s.%s",name,ENV.EXT or "html")
 -- do converter
 local default_id=function(i) return i end
 print(format("Reading from file: %q",input))
 local doc=file2doc(input)
 print(format("Writing to file: %q",output))
 doc2file(doc,output,ENV.id_func or default_id,ENV.SEP or " . ")
+if ENV.post_process then  ENV.post_process(name) end
 
 
 

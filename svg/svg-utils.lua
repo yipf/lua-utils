@@ -176,8 +176,14 @@ get_min_max=function(arr,key,min,max)
 end
 
 compute_border=function(nodes)
-	local xmin,xmax=get_min_max(nodes,"cx")
-	local ymin,ymax=get_min_max(nodes,"cy")
+	local xmin,xmax,ymin,ymax=math.huge,-math.huge,math.huge,-math.huge
+	local max,min=math.max,math.min
+	for i,v in ipairs(nodes) do
+		xmin=min(xmin,v.cx-v.rx)
+		xmax=max(xmax,v.cx+v.rx)
+		ymin=min(ymin,v.cy-v.ry)
+		ymax=max(ymax,v.cy+v.ry)
+	end
 	return xmin,xmax,ymin,ymax
 end
 

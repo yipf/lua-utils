@@ -6,6 +6,12 @@ local props={rx=25,ry=25,dx=100,dy=100,STYLE="fill:none;",SHAPE="ellipse"}
 
 Set_matrix=make_set_func(props)
 
+print_props=function()
+	for k,v in pairs(props) do
+		print(k,v)
+	end
+end
+
 Cell=function(label,shape,x,y,ref)
 	shape,x,y=shape or props.SHAPE,x and x*props.dx or 0, y and y*props.dy or 0
 	if ref then x=x+ref.cx; 	y=y+ref.cy end

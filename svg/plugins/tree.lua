@@ -39,7 +39,7 @@ end
 make_tree_LR=function(labels)  -- make a left-to-right tree 
 	local nodes={}
 	local tr=labels2tr(labels,nodes,1)
-	return calculate_xy_LR(tr,props.DX,props.DY,0,0),compute_border(nodes)
+	return calculate_xy_LR(tr,props.DX,props.DY,0,0),nodes
 end
 
 make_tree_UD=function(labels)  -- make an up-to-down tree 
@@ -49,6 +49,6 @@ make_tree_UD=function(labels)  -- make an up-to-down tree
 	for i,v in ipairs(nodes) do
 		v[1],v[2]=v[2],v[1]
 	end
-	return tr,compute_border(nodes)
+	return tr,nodes
 end
 

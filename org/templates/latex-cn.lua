@@ -42,7 +42,7 @@ local TABLE= {
 	EXT='tex',
 	OL="\n\\begin{enumerate}\n@VALUE@\n\\end{enumerate}",
 	UL="\n\\begin{itemize}\n@VALUE@\n\\end{itemize}",
-	LI=[[\item{@VALUE@}]],
+	LI=[[\item{@CAPTION@@VALUE@}]],
 	
 	TOC="\\tableofcontents",
 	TOC_ITEM="",
@@ -71,7 +71,7 @@ local TABLE= {
 	
 	BLOCK="\n\\begin{@TYPE@}\n@VALUE@\n\\end{@TYPE@}",
 	
-	P="@VALUE@",
+	P="@CAPTION@",
 	
 	
 	['em']="\\emph{@0@}",
@@ -91,7 +91,7 @@ local TABLE= {
 	['FIG']=FIGURE_PAT,
 	
 	[0]=[[
-\documentclass{book}
+\documentclass{article}
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{listings}
@@ -103,7 +103,7 @@ local TABLE= {
 \lstdefinestyle{customcode}{
   belowcaptionskip=1\baselineskip,
   breaklines=true,
-  xleftmargin=20pt,
+  xleftmargin=15pt,
   frame=single,
   showstringspaces=false,
   numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
@@ -116,7 +116,7 @@ local TABLE= {
   stringstyle=\color{orange},
 }
 
-\title{@CAPTION@}
+\title{@TITLE@}
 \author{@AUTHOR@}
 \date{@DATE@}
 
@@ -133,10 +133,11 @@ local TABLE= {
 \bibliography{@REFS@}
 \end{document}]],
 
-	[1]="\n\\chapter{@CAPTION@} \\label{@TYPE@:@ID@}\n@VALUE@",
-	[2]="\n\\section{@CAPTION@} \\label{@TYPE@:@ID@}\n@VALUE@",
-	[3]="\n\\subsection{@CAPTION@} \\label{@TYPE@:@ID@}\n@VALUE@",
-	[4]="\n\\subsubsection{@CAPTION@} \\label{@TYPE@:@ID@}\n@VALUE@",
+--~ 	[1]="\n\\chapter{@CAPTION@} \\label{@TYPE@:@ID@}\n@VALUE@",
+	[1]="\n\\section{@CAPTION@} \\label{@TYPE@:@ID@}\n@VALUE@",
+	[2]="\n\\subsection{@CAPTION@} \\label{@TYPE@:@ID@}\n@VALUE@",
+	[3]="\n\\subsubsection{@CAPTION@} \\label{@TYPE@:@ID@}\n@VALUE@",
+	[4]="\n\\subsubsubsection{@CAPTION@} \\label{@TYPE@:@ID@}\n@VALUE@",
 
 	['$']=[[\(@0@\)]], -- inline eq
 	['*']="\\emph{@0@}", -- em
@@ -148,6 +149,8 @@ local TABLE= {
 	
 	timeuse="[@1@]",
 	
+	EXT="tex",
+	
 	post_process=function(name)
 		local str=string.gsub(COMPILE_PAT,"@name@",name)
 		local f=io.popen(str)
@@ -156,6 +159,11 @@ local TABLE= {
 			f:close()
 		end
 	end,
+	
+	
+	toc=function(options)
+		return "\\tableofcontents"
+	end
 	
 }
 

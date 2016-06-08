@@ -1,0 +1,17 @@
+(INCLUDE /home/yipf/lua-utils/S-document/html.ydoc)
+
+(SET CAPTION my first title)
+
+
+(SECTION (SET CAPTION TEST)
+
+(PARAGRAPH  my paragraph is right )
+
+(SECTION (SET CAPTION 222)
+	sadfadsf asdf asdf asdf asdf asd
+	asdf asdf asd f
+	asdf asdf asdf asdf asdf 
+)
+
+)
+

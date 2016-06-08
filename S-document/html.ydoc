@@ -1,0 +1,16 @@
+(SET 0
+<html>
+<head>
+<title> @CAPTION@</title>
+</head>
+<body>
+@VALUE@
+</body>
+</html>	
+)
+
+(SET 1	<h1>@CAPTION@</h1>@VALUE@)
+(SET 2	<h2>@CAPTION@</h2>@VALUE@)
+
+(SET PARAGRAPH <p>@VALUE@</p>)
+(SET EXT html)

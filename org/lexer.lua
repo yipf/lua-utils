@@ -33,18 +33,18 @@ local header_table={
 		if not level then return end
 		return NORMAL,PROPS_STYLE
 	end,
-	["^%#BEGIN_*(.-)$"]=function(str,level)
-		if not level then return end
-		return BLOCK_BEGIN,BLOCK_STYLE
-	end,
-	["^%#END()$"]=function(str,level)
-		if not level then return end
-		return BLOCK_END,BLOCK_STYLE
-	end,
-	["^%#FILE()$"]=function(str,level)
-		if not level then return end
-		return NORMAL,FILE_STYLE 
-	end,
+--~ 	["^%#BEGIN_*(.-)$"]=function(str,level)
+--~ 		if not level then return end
+--~ 		return BLOCK_BEGIN,BLOCK_STYLE
+--~ 	end,
+--~ 	["^%#END()$"]=function(str,level)
+--~ 		if not level then return end
+--~ 		return BLOCK_END,BLOCK_STYLE
+--~ 	end,
+--~ 	["^%#FILE()$"]=function(str,level)
+--~ 		if not level then return end
+--~ 		return NORMAL,FILE_STYLE 
+--~ 	end,
 }
 
 local str,header,level,style
