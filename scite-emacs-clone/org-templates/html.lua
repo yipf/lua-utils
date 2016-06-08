@@ -14,10 +14,10 @@ env["SECTION0"]=[[
 </html>
 ]]
 
-env["SECTION1"]="<h1>@ID@ @CAPTION@</h1>\n@CONTENT@"
-env["SECTION2"]="<h2>@ID@ @CAPTION@</h2>\n@CONTENT@"
-env["SECTION3"]="<h3>@ID@ @CAPTION@</h3>\n@CONTENT@"
-env["SECTION4"]="<h4>@ID@ @CAPTION@</h4>\n@CONTENT@"
+env["SECTION1"]="<h1 id='@ID@'>@ID@ @CAPTION@</h1>\n@CONTENT@"
+env["SECTION2"]="<h2 id='@ID@'>@ID@ @CAPTION@</h2>\n@CONTENT@"
+env["SECTION3"]="<h3 id='@ID@'>@ID@ @CAPTION@</h3>\n@CONTENT@"
+env["SECTION4"]="<h4 id='@ID@'>@ID@ @CAPTION@</h4>\n@CONTENT@"
 
 env["PARAGRAPH"]="<p>@CONTENT@</p>"
 
@@ -35,7 +35,11 @@ end
 env["OL"]=function(list) 	return list2str(list,"ol") end
 env["UL"]=function(list) 	return list2str(list,"ul") end
 
+env["em"]="<em>@VALUE@</em>"
+env["quoted"]="<em>@VALUE@</em>"
+env["quoted"]="<em>@VALUE@</em>"
 
+env["ref"]="<a href='#@ID@'>@CAPTION@</a>"
 
 
 return env

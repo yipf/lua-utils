@@ -113,36 +113,45 @@ end
 
 local inline_hooks={
 	 ["ref"]=function(t)
-		local tp,value=t.TYPE,t.VALUE
-		
+		local value=t.VALUE or t[2]
+		local block=value and BLOCKS[value]
+		return block and eval(ENV["ref"],block) or string.format("[[Invalid block caption or label: %q]]",value)
+	end,
+	["file"]=function(t)
+		local value=t.VALUE or t[2]
+		local f=value and io.open(value)
+		if not f then return string.format("[[Invalid filename: %q]]",value) end
+		value=f:read("*a")
+		f:close()
+		return value
+	end,
+	["lua"]=function(t)
+		local value=t.VALUE or t[2]
+		local func=value and loadstring("return "..value) 
+		return func and tostring(func()) or  string.format("[[Invalid lua script: %q]]",value)
 	end,
 }
 
 local str2args=function(str)
 	local args={}
 	for w in string.gmatch(str,"%b[]") do	args[#args+1]=string.sub(w,2,-2)	end
-	local n=#args
-	if n==0 then args[1]=str	end
+	if not args[1] then args[1]=str end
 	return args
 end
 
 local apply_args=function(args)
 	local first=args[1]
 	local key,value=string.match(first,"^%s*(%w+)%:%s*(.-)%s*$")
-	
+	key=key or first
+	local hook=inline_hooks[key] or ENV[key]
+	args.VALUE=value
+	return eval(hook,args) or  string.format("[[Invalid inline hook for %q]]",key)
 end
 
 local miniblock_func=function(str)
 	str=string.sub(str,2,-2)
 	local args=str2args(str)
-	
-	-- get hook according to first arg in args
-
-	key=key or first
-	t.TYPE=key
-	t[1]=value 
-	local hook=inline_hooks[key] or ENV[key]
-	return eval(hook,unpack(t,2,#t)) or string.format("[[Invalid inline hook for %q]]",key)
+	return apply_args(args)
 end
 
 local global_process=function(str,env,blocks)
@@ -159,7 +168,7 @@ org2others=function(org_file)
 	local env=require("org-templates/"..exporter)
 	assert(env,string.format("Invalid exporter: %q",exporter))
 	local content=tree2string(tree,env)
-	content=global_replace(content,env)
+	content=global_process(content,env,blocks)
 	print(content)
 	local output_file=org_file.."."..(env.EXT or exporter)
 	print(string.format("Generating %q",output_file))
