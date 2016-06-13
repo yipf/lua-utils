@@ -64,5 +64,7 @@ OnChar=function(ch)
 	if m then insert(m) end
 end
 
-
-
+OnStyle=function(styler)
+	local fn=get_lexer(props['Language'])
+	if fn then fn(styler) end   
+end

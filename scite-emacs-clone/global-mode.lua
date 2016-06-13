@@ -304,6 +304,7 @@ check_word=function()
 	word=get_sel()
 	local candidate=get_candidate(word)
 	if candidate then
+		editor:GotoPos(editor.SelectionEnd)
 		pop_list(string.len(word),candidate,"\n")
 	else
 		message("%q is right!",word)
@@ -320,6 +321,7 @@ next_error_word=function()
 		word=get_sel()
 		candidate=get_candidate(word)
 	until candidate
+	editor:GotoPos(editor.SelectionEnd)
 	pop_list(string.len(word),candidate,"\n")
 	return true
 end
@@ -328,7 +330,8 @@ global_bind_key("M-!",next_error_word)
 show_dict=function()
 	if editor.SelectionEmpty then sel_word(editor.CurrentPos) end
 	local word=get_sel()
-	message(eval_cmd(string.format("sdcv -n %s",word)))
+--~ 	message(eval_cmd(string.format("sdcv -n %s",word)))
+	editor:CallTipShow(editor.SelectionStart,eval_cmd(string.format("sdcv -n %s",word))) 
 	return true
 end
 global_bind_key("M-%",show_dict) 

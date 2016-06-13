@@ -1,14 +1,17 @@
-#+CAPTION:	哈哈哈
+#+CAPTION:	Document
 
 ##toc("SECTION","TABLE","FIGURE")## 
 
-* H11
+* Introduction
+
+* methodo
 
 asdfasfd  sfasdf dsf sdf  afdafasdfds
 
 
 asf sadf 
 
+success 
 
 ** H12
 
@@ -16,7 +19,7 @@ asdfasdfasf
 
 *** H13
 	
-	##ref[[H13]]##  **asdafafs**  $$aaaa$$ ``asdada``  ##os.date()##  ##img[[http://s3.cn.bing.net/th?id=OJ.NQd60ttBpeRKMg&amp;pid=MSNJVFeeds]]##
+	##ref[[H13]]##  **staff's**  $$aaaa$$ ``asdada``  ##os.date()##  ##img[[http://s3.cn.bing.net/th?id=OJ.NQd60ttBpeRKMg&amp;pid=MSNJVFeeds]]##
 
 	##ref[[hhh]]##
 

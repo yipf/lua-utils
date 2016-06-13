@@ -59,6 +59,10 @@ get_line_folder_level=function(line)
 	return level,level>=folder_header_level
 end
 
+set_line_level=function(line,level,folder)
+	editor.FoldLevel[line]=folder and level+folder_header_level or level
+end
+
 id=function(self) return self end
 make_factory=function(key2value,container)
 	key2value=key2value or id
@@ -136,3 +140,35 @@ obj2nav=function(obj)
 	end
 end
 navigation_functions=make_factory(obj2nav)
+
+
+local LEXERS={}
+
+make_style_register_function=function(language)
+	local format=string.format
+	local fmt=format("style.%s.%%d",language)
+	local id_=0
+	return function(style,id)
+		id=id or id_+1
+		props[string.format(fmt,id)]=style
+		id_=id
+		return id
+	end
+end
+
+make_line_lexer=function(language,line_processor)
+	local lexer=function(styler)
+		local s,e=editor:LineFromPosition(styler.startPos),editor:LineFromPosition(styler.startPos + styler.lengthDoc)
+		editor:StartStyling(styler.startPos, 31)
+		for i=s,e do		line_processor(i)		end
+	end
+	LEXERS[language]=lexer
+	return lexer
+end
+
+get_lexer=function(language) return language and LEXERS[language] end
+
+set_command=function(ext,command_type,command,execute_type)
+	props[string.format("command.%s.%s",command_type,ext)]=command
+	props[string.format("command.%s.subsystem.%s",command_type,ext)]=execute_type=="script" and 3 or 0
+end
