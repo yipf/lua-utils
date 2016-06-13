@@ -39,7 +39,17 @@ asdfasdfasf
 	[ref:hhh]
 
 	aaa
+
+|-------------|
+| asdfadsfasf |
+|-------------|
 	
+#+CAPTION:asdfasfa
+|---------------------+-------------+------------------|
+| asdfasdfasdfaasfasf | asfasfafd   | asdfsadfasdfdasf |
+|---------------------+-------------+------------------|
+| asdfasfafasdf       | asdfsadfdsa |                  |
+|---------------------+-------------+------------------|
 	
 #+TYPE:EQ
 \sum{aa}
@@ -58,20 +68,28 @@ asdfasdfasdf ##afafsafd## asdfasdfasdf asdf asdf asdf sdf asf  ``dsda``
 #+LABEL: hhh
 
 #+TYPE:FIGURE
+#+CAPTION:Image
 http://s3.cn.bing.net/th?id=OJ.NQd60ttBpeRKMg&amp;pid=MSNJVFeeds
 
 asdfasdfaf
 
 #+CAPTION: my table
-|------------+-------------+----------------------------|
-| asfdasfdsa |	asdfasfads |	asfdasdgasdgadgdsag 			|
-|------------+-------------+----------------------------|
-| asfdasfdsa |	asdfasfads |	asfdasdgasdgadgdsag 			|
-|------------+-------------+----------------------------|
-| asfdasfdsa |	asdfasfads |	asfdasdgasdgadgdsag 			|
-|------------+-------------+----------------------------|
-| asfdasfdsa |	asdfasfads |	asfdasdgasdgadgdsag 			|
-|------------+-------------+----------------------------|
+|-------------------------+--------------------------------------------------+-----------------------+----------------+-----------+-----------+--|
+| asfdasfdsa              | -asdfasfads                                      | asdfsdafasdf sadf saf | asdsafasdfdasf | adfasdfa  | a a       |  |
+|-------------------------+--------------------------------------------------+-----------------------+----------------+-----------+-----------+--|
+| asfdasfdsaafdasfasdfads | -asdfasfadsasdfasfsdafdas                        | - asfasdfasf          | fasdfas        | dfasdfasf | asdfasdf  |  |
+|-------------------------+--------------------------------------------------+-----------------------+----------------+-----------+-----------+--|
+| asfdasfdsa              | -asfdasdafadf                          sfasfdasf | asdasd                | aadsf          | adad      | asdfsadfa |  |
+|-------------------------+--------------------------------------------------+-----------------------+----------------+-----------+-----------+--|
+| asfdasfdsa              | -asdfasfads                                      | -asfdasdgasdafdffasdf | adaf           | afdasf    | asdasda   |  |
+|-------------------------+--------------------------------------------------+-----------------------+----------------+-----------+-----------+--|
+
+#+CAPTION: ppp
+|---------------+-------------------+----------+----------+---------------|
+| asdfasdf      | adasdasdasdasdasd | adasdasd | sadfdsaf | sfsd      fsd |
+|---------------+-------------------+----------+----------+---------------|
+| afadsfasfasfd | asdafas           | adada    |          | asdfasdf      |
+|---------------+-------------------+----------+----------+---------------|
 
 asdfasfsdf sdf sdf sadf ##afafdsf##
 

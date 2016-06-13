@@ -46,6 +46,7 @@ local update_block=function(block,stack,blocks)
 end
 
 local str2array=function(str,pat)
+	pat=pat or "%s*([^|]-)%s+|"
 	local arr={}
 	for w in string.gmatch(str,pat) do push(arr,w) end
 	return arr
@@ -76,7 +77,7 @@ local file2tree=function(filepath,blocks)
 			if tp=="UL" or tp=="OL" then 
 				line={LEVEL=v1,CAPTION=v2}
 			elseif tp=="TABLE" then
-				line=str2array(v1,"%s*(.-)%s+|")
+				line=str2array(v1,"%s*([^|]-)%s+|")
 			end
 			push(block,line) 
 		end
@@ -270,8 +271,93 @@ local exts="*.org;"
 props["file.patterns.org"]=exts
 props["lexer.$(file.patterns.org)"]=language
 
-set_command("$(file.patterns.org)","go","org2others $(FileNameExt)","script")
-
 make_line_lexer(language,line_function)
 
+-------------------------------------------------------------------------------------------------------------------------------
+--setting up
+-------------------------------------------------------------------------------------------------------------------------------
 
+set_command("$(file.patterns.org)","go","org2others $(FileNameExt)","script")
+props["abbreviations.$(file.patterns.org)"]="$(SciteUserHome)/org_abbrev.properties"
+
+-------------------------------------------------------------------------------------------------------------------------------
+--helper functions for editing
+-------------------------------------------------------------------------------------------------------------------------------
+local get_line_type_by_line=function(line)
+	local text=editor:GetLine(line)
+	return text,get_line_type(text)
+end
+
+local test_similar_lines=function(lines,TP,s,e,d)
+	local text,tp
+	d=d or 1
+	for i=s,e,d do
+		text,tp=get_line_type_by_line(i)
+		if tp~=TP then return i-d end
+		lines[i]=text
+	end
+	return e
+end
+
+local select_similar_lines=function(line) -- select similar lines with same format
+	line=line or position2line()
+	local lines={}
+	local text,tp=get_line_type_by_line(line)
+	local lines={[line]=text}
+	local S,E=test_similar_lines(lines,tp,line-1,0,-1),	test_similar_lines(lines,tp,line+1,editor.LineCount-1,1)
+	return tp,S,E,lines
+end
+
+local mode=register(MODES,language)
+
+local get_max_widths=function(lines,s,e)
+	local len,max=string.len,math.max
+	local maxs,row={}
+	for i=s,e do
+		row=string.sub(lines[i],2) -- drop the first `|'
+		row=str2array(row,"%s*([^|]-)%s+|")
+		if row[1] then
+			for ii,v in ipairs(row) do
+				v=len(v)
+				maxs[ii]=maxs[ii] and max(maxs[ii],v) or v
+			end
+		end
+		lines[i]=row
+	end
+	return lines,maxs
+end
+
+local reprint_cells=function(row,maxs)
+	local sep
+	if row[1] then
+		for i,v in ipairs(maxs) do			row[i]=string.format(string.format("%%-%ds",v),row[i] or "")		end
+		return "| "..table.concat(row," | ").." |"
+	else
+		if not sep then
+			for i,v in ipairs(maxs) do				row[i]=string.rep("-",v)			end
+			sep="|-"..table.concat(row,"-+-",1,#maxs).."-|"
+		end
+		return sep
+	end
+end
+
+local reprint_rows=function(lines,maxs,s,e)
+	for i=s,e do		lines[i]=reprint_cells(lines[i],maxs)	end
+	return lines
+end
+
+reformat_table=function()
+	local pos=editor.CurrentPos
+	local tp,S,E,lines=select_similar_lines(position2line(pos))
+	local maxs={}
+	if tp=="TABLE" then
+		lines,maxs=get_max_widths(lines,S,E)
+		lines=reprint_rows(lines,maxs,S,E)
+		local str=table.concat(lines,"\n",S,E).."\n"
+		set_sel(line2position(S),line2position(E+1))
+		replace_sel(str)
+		reset_pos(pos)
+	end
+	return true
+end
+bind_key(mode,"C-c C-c",reformat_table)

@@ -143,7 +143,6 @@ end
 
 local last_child=function(line)
 	local l=editor:GetLastChild(line, -1)
-	print(l)
 	return l>=0 and l
 end
 
