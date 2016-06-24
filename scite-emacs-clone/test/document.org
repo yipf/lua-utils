@@ -1,36 +1,51 @@
-#+CAPTION:	Document
+#+CAPTION:	Document $$a+0$$
 
 ##toc("SECTION","TABLE","FIGURE")## 
 
-* Introduction
+* Introduction of ##date## 
 
 * methodo
 
-asdfasfd  sfasdf dsf sdf  afdafasdfds
+asdfasfd  sfasdf dsf sdf  afdafasdfds 
 
 
 asf sadf 
 
 success 
 
-** H12
+** H12 $$ADSAD$$ 
 
 asdfasdfasf
 
 *** H13
 	
-	##ref[[H13]]##  **staff's**  $$aaaa$$ ``asdada``  ##os.date()##  ##img[[http://s3.cn.bing.net/th?id=OJ.NQd60ttBpeRKMg&amp;pid=MSNJVFeeds]]##
+	## ref[[H13]]##  **staff's**  $$aaaa$$ ``asdada``  ##os.date()##  ##img[[http://s3.cn.bing.net/th?id=OJ.NQd60ttBpeRKMg&amp;pid=MSNJVFeeds]]##
 
-	##ref[[hhh]]##
+	## ref[[hhh]]## asdfasdfdasfasdf ##   eval_cmd"date"## ##    3+4+5## 
+	## asdf##
 
-	1. asdfasdfasf
-	2. asdfasfa
-	3. asdfasfasdf
-	4. adsfasfasdfa
-	5. adfasdfasdfa
+	1.	asdfasdfasf  ##sss##
+	2.	asdfasfa 
+	3.	adfasdfasf
+	4.	adsfasdfasf
+	5.	asdfasfasdf
+	6.	adfadsfafdsaf
+	7.	afasdfasdfafd
+	8.	asdfasdfadsfadf
+	9.	afdadsfadfdsfaf
+	10.	adsfasfasdfa
+	11.	adfasdfasdfa
+
+	(a)	asdfasdfdsafasfasdf
+	(b)	asdfasdfasdfasdf
+	(c)	\asdfasfasf
+	(d)	asdfasdfasdfaffas
+	(e)	afasdfasdfasf
+	(f)	afadsfasdfasdf
+	(g)	adfasdfasdfasdfadsf
 	
 	- adfafasf
-	- asdfasfasdf
+	- asdfasfasdf ##adsadasd##
 
 	[ref:H15]
 	
@@ -74,23 +89,22 @@ http://s3.cn.bing.net/th?id=OJ.NQd60ttBpeRKMg&amp;pid=MSNJVFeeds
 asdfasdfaf
 
 #+CAPTION: my table
-|-------------------------+--------------------------------------------------+-----------------------+----------------+-----------+-----------+--|
-| asfdasfdsa              | -asdfasfads                                      | asdfsdafasdf sadf saf | asdsafasdfdasf | adfasdfa  | a a       |  |
-|-------------------------+--------------------------------------------------+-----------------------+----------------+-----------+-----------+--|
-| asfdasfdsaafdasfasdfads | -asdfasfadsasdfasfsdafdas                        | - asfasdfasf          | fasdfas        | dfasdfasf | asdfasdf  |  |
-|-------------------------+--------------------------------------------------+-----------------------+----------------+-----------+-----------+--|
-| asfdasfdsa              | -asfdasdafadf                          sfasfdasf | asdasd                | aadsf          | adad      | asdfsadfa |  |
-|-------------------------+--------------------------------------------------+-----------------------+----------------+-----------+-----------+--|
-| asfdasfdsa              | -asdfasfads                                      | -asfdasdgasdafdffasdf | adaf           | afdasf    | asdasda   |  |
-|-------------------------+--------------------------------------------------+-----------------------+----------------+-----------+-----------+--|
+|-------------------------+-----------------------------+-----------------------+----------------+-----------+-----------+-------------|
+| asfdasfdsa              | -asdfasfads                 | asdfsdafasdf sadf saf | asdsafasdfdasf | adfasdfa  | a a       | adfadsfsadf |
+|-------------------------+-----------------------------+-----------------------+----------------+-----------+-----------+-------------|
+| asfdasfdsaafdasfasdfads | -asdfasfadsasdfas  fsdafdas | - asfasdfasf          | fasdfas        | dfasdfasf | asdfasdf  |             |
+|-------------------------+-----------------------------+-----------------------+----------------+-----------+-----------+-------------|
+| asfdasfdsa              | -asfdasdafadf sfasfdasf     | asdasd                | aadsf          | adad      | asdfsadfa |             |
+|-------------------------+-----------------------------+-----------------------+----------------+-----------+-----------+-------------|
+| asfdasfdsa              | -asdfasfads                 | -asfdasdgasdafdffasdf | adaf           | afdasf    | asdasda   |             |
+|-------------------------+-----------------------------+-----------------------+----------------+-----------+-----------+-------------|
 
 #+CAPTION: ppp
-|---------------+-------------------+----------+----------+---------------|
-| asdfasdf      | adasdasdasdasdasd | adasdasd | sadfdsaf | sfsd      fsd |
-|---------------+-------------------+----------+----------+---------------|
-| afadsfasfasfd | asdafas           | adada    |          | asdfasdf      |
-|---------------+-------------------+----------+----------+---------------|
-
+|---------------+-------------------+----------+----------+------------------------|
+| asdfasdf      | adasdasdasdasdasd | adasdasd | sadfdsaf | sfsd  $$a+b=c$$    fsd |
+|---------------+-------------------+----------+----------+------------------------|
+| afadsfasfasfd | asdafas           | adada    |          | asdfasdf               |
+|---------------+-------------------+----------+----------+------------------------|
 asdfasfsdf sdf sdf sadf ##afafdsf##
 
 	- asdfasfasdf

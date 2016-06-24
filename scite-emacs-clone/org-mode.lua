@@ -8,8 +8,8 @@ local patterns={
 ["SEPERATION"]="^%s*$",
 -- block lines
 ["TABLE"]="^|[%s%-]+(.-[%s%-]+|)%s*$",
-["UL"]="^%s+()%p+%s+(.-)%s*$",
-["OL"]="^%s+()%p*%w+%p%s+(.-)%s*$",
+["UL"]="^%s+()[%*%-]-%s+(.-)%s*$",
+["OL"]="^%s+()[%(%[]-%w+[%)%]%.]-%s+(.-)%s*$",
 }
 
 local get_line_type=function(line)
@@ -170,8 +170,12 @@ local inline_element2str=function(tag,content)
 	end
 end
 
+local process_line=function(line)
+	return (string.gsub(line,"([%*%$%#%`])%1%s*(.-)%s*%1%1",inline_element2str))
+end
+
 process_content=function(content)
-	return (string.gsub(content,"([%*%$%#%`])%1%s*(.-)%s*%1%1",inline_element2str))
+	return (string.gsub(content,"([^\n]*)",process_line))
 end
 
 generate_id=function(blocks,sep)
@@ -253,17 +257,17 @@ local line_function=function(line)
 		set_line_level(line,20,true)
 	end
 	local style=styles[tp] or 0
-	if tp=="PARAGRAPH" then 
+--~ 	if tp=="PARAGRAPH" or tp=="UL" or tp=="OL" then 
 		local s=1
-		for ss,tag,ee in string.gmatch(text,"()([%`%#%$%*])%2.-%2%2()") do
+		for ss,tag,ee in string.gmatch(text,"()([%`%#%$%*])%2%s*.-%s*%2%2()") do
 			editor:SetStyling(ss-s,style)
 			editor:SetStyling(ee-ss,styles[tag])
 			s=ee
 		end
-		editor:SetStyling(length-s+1,0)
+		editor:SetStyling(length-s+1,style)
 		return
-	end
-	editor:SetStyling(length, style)	
+--~ 	end
+--~ 	editor:SetStyling(length, style)	
 end
 
 local exts="*.org;"
@@ -346,18 +350,46 @@ local reprint_rows=function(lines,maxs,s,e)
 	return lines
 end
 
-reformat_table=function()
+reformat_table=function(lines,S,E)
+	local maxs={}
+	lines,maxs=get_max_widths(lines,S,E)
+	lines=reprint_rows(lines,maxs,S,E)
+	return table.concat(lines,"\n",S,E)
+end
+
+local list_row2id_content=function(line)
+	return string.match(line,"^%s+(%p*)(%w+)(%p)%s+(.-)%s*$")
+end
+
+reformat_orderlist=function(lines,S,E)
+	local row=lines[S]
+	local p1,id,p2,content=string.match(row,"^%s+(%p*)(%w+)(%p)%s+(.-)%s*$")
+	if tonumber(id) then
+		id=-S+1
+		for i=S,E do
+			row=lines[i]
+			lines[i]=string.gsub(row,"^%s+%p*%w+%p%s+(.-)%s*",string.format("\t%s%d%s\t%%1",p1,id+i,p2))
+		end
+	else
+		id=string.byte("a")-S
+		for i=S,E do
+			row=lines[i]
+			lines[i]=string.gsub(row,"^%s+%p*%w+%p%s+(.-)%s*",string.format("\t%s%s%s\t%%1",p1,string.char(id+i),p2))
+		end
+	end
+	return table.concat(lines,"",S,E)
+end
+
+reformat_lines=function()
 	local pos=editor.CurrentPos
 	local tp,S,E,lines=select_similar_lines(position2line(pos))
-	local maxs={}
-	if tp=="TABLE" then
-		lines,maxs=get_max_widths(lines,S,E)
-		lines=reprint_rows(lines,maxs,S,E)
-		local str=table.concat(lines,"\n",S,E).."\n"
+	local str= tp=="TABLE" and reformat_table(lines,S,E) or tp=="OL" and reformat_orderlist(lines,S,E)
+	if lines then
 		set_sel(line2position(S),line2position(E+1))
 		replace_sel(str)
-		reset_pos(pos)
 	end
+	reset_pos(pos)
 	return true
 end
-bind_key(mode,"C-c C-c",reformat_table)
+
+bind_key(mode,"C-c C-c",reformat_lines)
