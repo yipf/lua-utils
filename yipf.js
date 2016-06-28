@@ -44,7 +44,7 @@ var light = new THREE.SpotLight( 0xffffff, 1, 0, Math.PI / 2 );
 
 
 // ---------------------------------------------------------------------------------------------------------------------
-// Define Scene
+// Helper functions
 // ---------------------------------------------------------------------------------------------------------------------
 	  
 var floor_height=3.0,wall_thickness=0.1
@@ -80,9 +80,9 @@ append_walls_from_points2d=function(parent,points2d,top=floor_height,bottom=0.0,
 		to=points2d[i];
 		h1=from[2];
 		h2=from[3];
-		if(h1 && h2){
-			if(h1>bottom){parent.add(make_wall_from_xz(from[0],from[1],to[0],to[1],h1,bottom,color));}
-			if(h2<top){parent.add(make_wall_from_xz(from[0],from[1],to[0],to[1],top,h2,color));}
+		if(h1 || h2){
+			if(h1 && h1>bottom){parent.add(make_wall_from_xz(from[0],from[1],to[0],to[1],h1,bottom,color));}
+			if(h2 && h2<top){parent.add(make_wall_from_xz(from[0],from[1],to[0],to[1],top,h2,color));}
 		}else{
 			parent.add(make_wall_from_xz(from[0],from[1],to[0],to[1],top,bottom,color));
 		}
@@ -111,19 +111,18 @@ append_stairs_z=function(parent,fx,fy,fz,tx,ty,tz,n,color){
 	return parent;
 }
 
-append_stairs_from_points3d=function(parent,points3d,N=8,width=0.5,color=0xFFFFFF){
-	var from=points3d[0],to,n,w;
+append_stairs_from_points3d=function(parent,points3d,increase,N=8,width=0.5,color=0xFFFFFF){
+	var from=points3d[0],to,n,w,dy;
 	for ( i=1; i<points3d.length; i++ ) {
 		to=points3d[i];
 		n=from[3] || N;
 		w=from[4] || width;
 		dy=0;
 		if(abs(to[1]-from[1])<0.001){ n=1; dy=wall_thickness;}
-				alert("n:"+n+"w:"+w);
 		if(abs(to[0]-from[0])<0.001){
-			append_stairs_z(parent,from[0],from[1]-dy,from[2]-w,to[0],to[1]+dy,to[2]+w,n,color);
+			append_stairs_z(parent,from[0]-w,from[1]-dy,from[2],to[0]+w,to[1]+dy,to[2],n,color);
 		}else if(abs(to[2]-from[2])<0.001){
-			append_stairs_x(parent,from[0]-w,from[1]-dy,from[2],to[0]+w,to[1]+dy,to[2],n,color);
+			append_stairs_x(parent,from[0],from[1]-dy,from[2]-w,to[0],to[1]+dy,to[2]+w,n,color);
 		}else{
 			parent.add(make_box(from[0],from[1]-dy,from[2],to[0],to[1]+dy,to[2],color));
 		}
@@ -132,9 +131,6 @@ append_stairs_from_points3d=function(parent,points3d,N=8,width=0.5,color=0xFFFFF
 	return parent;
 }
 
-append_armrest_form_points3d=function(parent,points3d,sitck_color=0x0000FF,bar_color=0xFFFFFF){
-	
-}
 make_ground=function(west,east,north,south,height,color=0xFFFFFF,offset=0.3, thickness=wall_thickness){
 	return make_box(west-offset,height-thickness,north-offset, 	east+offset,height+thickness,south+offset, 	color);
 }
@@ -146,18 +142,14 @@ set_matrix=function(obj,n11, n12, n13, n14, n21, n22, n23, n24, n31, n32, n33, n
 	return obj
 }
 
-make_stand_stick=function(x,y,z,height=1.2,hsize=0.02,color=0x0000FF){
-	return make_box(x-hsize,y,z-hsize,x+hsize,y+height,z+hsize,color);
-}
-
-make_bar_east_to_west=function(fx,fy, tx, ty, z, color=0xFFFFFF){
+make_bar_x=function(fx,fy,fz,  tx, ty, tz, color=0xFFFFFF){
 	var geo=new THREE.CubeGeometry(abs(tx-fx), 0.3, 0.2 );
 	var mat=make_color_material(color);
 	var box=new THREE.Mesh(geo,mat);
 	set_matrix(box,
 		1,0,0,(fx+tx)*0.5,
 		(ty-fy)/(tx-fx),1,0,(fy+ty)*0.5,
-		0,0,1,z,
+		0,0,1,(tz+fz)*0.5,
 		0,0,0,1
 	);
 	box.castShadow = true;
@@ -165,23 +157,12 @@ make_bar_east_to_west=function(fx,fy, tx, ty, z, color=0xFFFFFF){
 	return box;
 }
 
-append_armrest_west_to_east=function(parent=scene, west, east, h_west, h_east,  pos, n,stick_height=1.5, color_bar=0xFFFFFF, color_stick=0x0000FF){
-	parent.add(make_bar_east_to_west(west,h_west+stick_height, 	east, h_east+stick_height, pos	));
-	var dx=(east-west)/n, dy=(h_east-h_west)/n
-	while(n--){
-		parent.add(make_stand_stick(west+dx/2,h_west,pos,stick_height));
-		west+=dx;
-		h_west+=dy;
-	}
-	return parent;
-}
-
-make_bar_north_to_south=function(fz,fy, tz, ty, x, color=0xFFFFFF){
+make_bar_z=function(fx,fy,fz, tx, ty, tz, color=0xFFFFFF){
 	var geo=new THREE.CubeGeometry(0.2, 0.3, abs(tz-fz) );
 	var mat=make_color_material(color);
 	var box=new THREE.Mesh(geo,mat);
 	set_matrix(box,
-		1,0,0,x,
+		1,0,0,(fx+tx)*0.5,
 		0,1,(ty-fy)/(tz-fz),(fy+ty)*0.5,
 		0,0,1,(fz+tz)*0.5,
 		0,0,0,1
@@ -191,82 +172,48 @@ make_bar_north_to_south=function(fz,fy, tz, ty, x, color=0xFFFFFF){
 	return box;
 }
 
-append_armrest_north_to_south=function(parent=scene, north, south, h_north, h_south, pos, n, stick_height=1.5, color_bar=0xFFFFFF, color_stick=0x0000FF){
-	parent.add(make_bar_north_to_south(north,h_north+stick_height, 	south, h_south+stick_height, pos	));
-	var dz=(south-north)/n, dy=(h_south-h_north)/n;
+append_stand_sticks_x=function(parent, fx,fy,fz,tx,ty,tz, n=1,height=1.5, size=0.1,color=0x0000FF){
+	var dx=(tx-fx)/n, dy=(ty-fy)/n,z=(fz+tz)/2;
 	while(n--){
-		parent.add(make_stand_stick(pos,h_north,north+dz/2,stick_height));
-		north+=dz;
-		h_north+=dy;
+		parent.add(make_box(fx-size+dx/2,fy,z-size,fx+size+dx/2,fy+height,z+size,color));
+		fx+=dx,fy+=dy;
+	}
+	return parent;
+}
+
+append_stand_sticks_z=function(parent, fx,fy,fz,tx,ty,tz, n=1,height=1.5, size=0.1,color=0x0000FF){
+	var dz=(tz-fz)/n, dy=(ty-fy)/n, x=(fx+tx)/2;
+	while(n--){
+		parent.add(make_box(x-size,fy,fz-size+dz/2,x+size,fy+height,fz+size+dz/2,color));
+		fz+=dz,fy+=dy;
+	}
+	return parent;
+}
+
+append_armrest_form_points3d=function(parent,points3d,increase,stick_color=0x0000FF,bar_color=0xFFFFFF,N=8,height=1,size=0.02){
+	var from=points3d[0],to,h,n,s;
+	for ( i=1; i<points3d.length; i++ ) {
+		to=points3d[i];
+		if(increase){to[0]+=from[0]; to[1]+=from[1]; to[2]+=from[2];	}
+		h=from[3] || height;
+		n=from[4] || N;
+		s=from[5] || size;
+		if(abs(to[0]-from[0])<0.001){
+			parent.add(make_bar_z(from[0],from[1]+h,from[2],to[0],to[1]+h,to[2],bar_color));
+			append_stand_sticks_z(parent,from[0],from[1],from[2],to[0],to[1],to[2],n,h,s,stick_color);
+		}else if(abs(to[2]-from[2]<0.001)){
+			parent.add(make_bar_x(from[0],from[1]+h,from[2],to[0],to[1]+h,to[2],bar_color));
+			append_stand_sticks_x(parent,from[0],from[1],from[2],to[0],to[1],to[2],n,h,s,stick_color);
+		}
+		from=to;
 	}
 	return parent;
 }
 
 
-append_stairs_north_to_south=function(parent, n, bottom, top, north, south, west, east, color=0xFFFFFF ){
-	var dy=(top-bottom)/n,dz=(south-north)/n;
-	while (n-- ) {
-		parent.add(make_box(west,bottom,north,   east,bottom+dy,north+dz, color   ));
-		bottom+=dy;
-		north+=dz;
-	}
-	return parent;
-}
-
-append_stairs_west_to_east=function(parent, n, bottom, top, north, south, west, east, color=0xFFFFFF ){
-	var dy=(top-bottom)/n,dx=(east-west)/n;
-	while (n-- ) {
-		parent.add(make_box(west,bottom,north,   west+dx,bottom+dy,south, color   ));
-		bottom+=dy;
-		west+=dx;
-	}
-	return parent;
-}
-
-
-append_outdoor_stairs=function(parent=scene,x,y,z){
-	var dx=2.5, dy=1.5,dz=1.0; 
-	
-	parent.add(make_box(x-0.1,y,z-1, x+0.1, y+2, z));
-	
-	parent.add(make_box(x-1,y+2.6,z-1, x+1, y+3, z+1));
-	parent.add(make_box(x-1,y,z-1, x+1, y+3, z-1.1));
-	parent.add(make_box(x+1,y,z-1, x+1.1, y+3, z));
-	
-	parent.add(make_ground(x-1,x+1,z-1,z,y,0xFFFFFF,0));
-
-	append_stairs_north_to_south(parent, 8, y, y-dy, z,z+2, x-1,x+1);
-	append_armrest_north_to_south(parent,z,z+2,y,y-dy,x,8);
-	//~ append_armrest_north_to_south(parent,z,z+2,y,y-dy,x-1,8);
-	z+=2;
-	y-=dy;
-	parent.add(make_ground(x-1,x+1,z,z+1,y,0xFFFFFF,0));
-	append_armrest_north_to_south(parent,z,z+1,y,y,x,4);
-	append_armrest_west_to_east(parent,x-1,x+1,y,y,z+dz,8);
-	x-=1;
-	append_stairs_west_to_east(parent, 8, y-dy, y, z,z+dz, x-dx, x);
-	append_armrest_west_to_east(parent,x-dx,x,y-dy,y,z+dz,8);
-	x-=dx;
-	y-=dy;
-	z+=dz;
-	parent.add(make_ground(x-1,x,z-1,z+1,y,0xFFFFFF,0));
-	//~ append_armrest_west_to_east(parent,x-1,x,y,y,z-1,4);
-	append_armrest_west_to_east(parent,x-1,x,y,y,z+dz,4);
-	append_armrest_north_to_south(parent,z-1,z+dz,y,y,x-1,8);
-	append_stairs_west_to_east(parent, 8, y, y-dy, z,z+dz, x, x+dx);
-	append_armrest_west_to_east(parent,x,x+dx,y,y-dy,z+dz,8);
-	append_armrest_west_to_east(parent,x,x+dx,y,y-dy,z,8);
-	x+=dx+1;
-	y-=dy;
-	z+=dz;
-	parent.add(make_ground(x-1,x+1,z-1,z,y,0xFFFFFF,0));
-	append_armrest_west_to_east(parent,x-1,x+1,y,y,z-1,8);
-	append_armrest_north_to_south(parent,z,z+2,y,y-dy,x-1,8);
-	append_stairs_north_to_south(parent,8,y,y-dy, z, z+2, x-1, x+1);
-	
-	return parent;
-}
-
+// ---------------------------------------------------------------------------------------------------------------------
+// Define Scene
+// ---------------------------------------------------------------------------------------------------------------------
 
 var buildings=[]
 
@@ -275,46 +222,55 @@ buildings.push(make_ground(-ground_size,ground_size, -ground_size,ground_size, -
 
 buildings.push(function(h=0,color_ground=0xFFFFFF,color_wall=0x880000){
 	var group=new THREE.Group(); 
-	group.position.set(0,h,0);
-	group.add(make_ground( 0,11,	-8,0, 	0,	  color_ground));
-	append_walls_from_points2d(group,[[0,-1.5],[0,0],[11,0],[11,-8],[0,-8],[0,-2.5]]);
+	group.position.set(1,h,0);
+	group.add(make_ground( -1,11,	-8,0, 	0,	  color_ground));
+	append_walls_from_points2d(group,[[-1,0],[4.5,0,0,2],[6.5,0],[11,0],[11,-8],[-1,-8],[-1,0]]);
 	return group;
 }()); // floor 1
 
 buildings.push(function(h=floor_height,color_ground=0xFFFFFF,color_wall=0x880000){
 	var group=new THREE.Group(); 
-	group.position.set(0,h,0);
-	group.add(make_ground( 0,11,	-8,0, 	0,	  color_ground));
-	append_walls_from_points2d(group,[[0,-1.5],[0,0],[11,0],[11,-8],[0,-8],[0,-2.5]]);
+	group.position.set(1,h,0);
+	group.add(make_ground( -1,11,	-8,0, 	0,	  color_ground));
+	append_walls_from_points2d(group,[[0,-5],[-1,-5],[-1,0],[0,0],[11,0],[11,-8],[0,-8],[0,-6]]);
 	return group;
 }());// floor 2
 
 buildings.push(function(h=2*floor_height,color_ground=0xFFFFFF,color_wall=0x880000){
 	var group=new THREE.Group(); 
-	group.position.set(0,h,0);
+	group.position.set(1,h,0);
 	group.add(make_ground( 0,11,	-8,0, 	0,	  color_ground));
-	append_walls_from_points2d(group,[[0,-1.5],[0,0,1,2],[11,0],[11,-8],[0,-8],[0,-2.5]]);
-	//~ append_outdoor_stairs(group,1,0,-1.5);
-	var x=-1,z=-1.5;
-	append_stairs_from_points3d(group,[[x,h,z],[x,h,z-1],[x,h-1.5,z-2]]);
-	
-	
+	append_walls_from_points2d(group,[[0,-5],[-1,-5],[-1,0],[0,0],[11,0],[11,-8],[0,-8],[0,-6]]);
+	// append outdoor stairs
+	var x=-0.8,y=0,z=-5;
+	append_stairs_from_points3d(group,[[x,y,z],[x,y,z-1],[x,y-1.5,z-3],[x,y-1.5,z-4]]);
+	x+=0.5,z-=3.5,y-=1.5;
+	append_stairs_from_points3d(group,[[x,y,z],[x+2,y-1.5,z],[x+3,y-1.5,z]]);
+	x+=3,y-=1.5,z-=1;
+	append_stairs_from_points3d(group,[[x,y,z],[x-1,y,z],[x-3,y-1.5,z],[x-5,y-1.5,z]]);
+	x-=4,y-=1.5;z-=0.5;
+	append_stairs_from_points3d(group,[[x,y,z,8,1],[x,y-1.5,z-2]]);
+	// append armrests
+	x=-0.3,y=0,z=-5;
+	append_armrest_form_points3d(group,[[x,y,z],[-1,0,0],[0,0,-1],[0,-1.5,-2],[0,0,-1],[1,0,0],[2,-1.5,0],[-2,-1.5,0],[-2,0,0]],true);
+	x=2.5,y=-3,z=-8;
+	append_armrest_form_points3d(group,[[x,y,z],[0,0,-2],[-1,0,0],[-2,-1.5,0],[0,-1.5,-2]],true);
 	return group;
 }());// floor 3
 
 buildings.push(function(h=3*floor_height,color_ground=0xFFFFFF,color_wall=0x880000){
 	var group=new THREE.Group(); 
-	group.position.set(0,h,0);
-	group.add(make_ground( 0,11,	-8,0, 	0,	  color_ground));
-	append_walls_from_points2d(group,[[0,-1.5],[0,0],[11,0],[11,-8],[0,-8],[0,-2.5]]);
+	group.position.set(1,h,0);
+	group.add(make_ground( -1,11,	-8,0, 	0,	  color_ground));
+	append_walls_from_points2d(group,[[0,-5],[-1,-5],[-1,0],[0,0],[11,0],[11,-8],[0,-8],[0,-6]]);
 	return group;
 }());// floor 4
 
 buildings.push(function(h=4*floor_height,color_ground=0xFFFFFF){
 	var group=new THREE.Group(); 
-	group.position.set(0,h,0);
-	group.add(make_ground( 0,11,	-8,0, 	0,	  color_ground));
-	append_walls_from_points2d(group,[[0,-8],[11,-8],[11,0],[0,0],[0,-8]],1.0,0,0xFFFFFF);
+	group.position.set(1,h,0);
+	group.add(make_ground( -1,11,	-8,0, 	0,	  color_ground));
+	append_walls_from_points2d(group,[[-1,-8],[11,-8],[11,0],[-1,0],[-1,-8]],1.0,0,0xFFFFFF);
 	return group;
 }()); // roof
 
